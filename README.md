@@ -1,7 +1,12 @@
+**WORK IN PROGRESS**
+
+Contributions welcome - by PR is possible.
+See Issues for active feature dicsussions.
+
 NAME
 ====
 
-HTMX - blah blah blah
+This module provides a programmatic style for HTML and HTMX ([htmx.org]) web content.
 
 SYNOPSIS
 ========
