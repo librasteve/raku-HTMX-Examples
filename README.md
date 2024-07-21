@@ -3,6 +3,18 @@
 Contributions welcome - by PR is possible.
 See Issues for active feature dicsussions.
 
+TODOS
+=====
+
+- [ ] Get a definitive list of HTML tags
+- [ ] Export them so that `h1("text")` makes `<h1>text</h1>` and so on
+  - Maybe a Grammar/Actions would be nice for this
+- [ ] Do the ¶ term
+- [ ] Make a parse script (& instructions how to watch a dir)
+- [ ] Write some docs in POD6
+- [ ] Release with App::Mi6
+- [ ] Publish as raku-htmx on the htmx Discord
+
 NAME
 ====
 
