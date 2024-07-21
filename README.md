@@ -1,7 +1,8 @@
 **WORK IN PROGRESS**
 
-Contributions welcome - by PR is possible.
-See Issues for active feature dicsussions.
+Contributions welcome - by PR please if possible.
+
+See [Issues](https://github.com/librasteve/raku-HTMX/issues/1) for active feature dicsussions.
 
 TODOS
 =====
