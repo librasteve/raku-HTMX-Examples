@@ -7,14 +7,22 @@ See [Issues](https://github.com/librasteve/raku-HTMX/issues/1) for active featur
 TODOS
 =====
 
+#### Minimum Lovable Product (`MLP`)
+
 - [ ] Get a definitive list of HTML tags
 - [ ] Export them so that `h1("text")` makes `<h1>text</h1>` and so on
-  - Maybe a Grammar/Actions would be nice for this
 - [ ] Do the ¶ term
 - [ ] Make a parse script (& instructions how to watch a dir)
 - [ ] Write some docs in POD6
 - [ ] Release with App::Mi6
 - [ ] Publish as raku-htmx on the htmx Discord
+
+#### Follow On
+
+- [ ] CSS - try some alternatives, read some stuff, make a plan
+- [ ] Cro - how to integrate HTMX Static pages with Cro backend
+- [ ] Hummingbird - ditto for HB
+- [ ] Attribute checking (need deeper list of attr names and set of types)
 
 NAME
 ====
