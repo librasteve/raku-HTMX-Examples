@@ -1,6 +1,6 @@
 unit class HTMX;
 
-
+constant term:<¶> = $?NL;
 
 
 ##### HTMX Tag Export #####
@@ -10,8 +10,11 @@ my Str @tags = "$*HOME/.rahx-config/html5-tags-list.csv".IO.lines;
 # Export them so that `h1("text")` makes `<h1>text</h1>` and so on
 # eg sub h1(Str $inner) {do-tag 'h1', $inner}
 
-sub do-tag( $tag, $inner ) {
-    '<' ~ $tag ~ '>' ~ $inner ~ '</' ~ $tag ~ '>'
+sub do-tag( $tag, $inner, *%h ) {
+
+    my Str $attrs = (+%h ?? ' ' !! '') ~ %h.map({ .key ~ '="' ~ .value ~ '"'  }).join(' ');
+
+    '<' ~ $tag ~ $attrs ~ '>' ~ $inner ~ '</' ~ $tag ~ '>'
 }
 
 # put in all the tags programmatically
@@ -19,12 +22,9 @@ sub do-tag( $tag, $inner ) {
 
 my package EXPORT::DEFAULT {
     for @tags -> $tag {
-        OUR::{'&' ~ $tag} := sub ($inner) { do-tag( "$tag", $inner ) }
+        OUR::{'&' ~ $tag} := sub ($inner, *%h) { do-tag( "$tag", $inner, |%h ) }
     }
 }
-
-
-
 
 
 

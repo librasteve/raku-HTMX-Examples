@@ -4,4 +4,4 @@ use v6.d;
 use HTMX;
 
 
-say h1('text');
+say h1('text', :class<jumbotron>);
