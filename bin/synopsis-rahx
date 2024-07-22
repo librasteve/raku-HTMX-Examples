@@ -3,14 +3,13 @@ use v6.d;
 
 use HTMX;
 
-put +list-tags;
-put +list-singulars;
-put +list-regulars;
+
 
 
 say h1('text', :class<jumbotron>);
+say h1 :class<doobie>;
 
-say div (:class<jumbotron>, <xx>);
+say div :class<jumbotron>, 'xx';
 
 
 

@@ -6,7 +6,7 @@ constant term:<¶> = $?NL;
 
 #viz. https://www.w3schools.com/tags/default.asp
 
-constant @tags = <a abbr address area article aside audio b base bdi bdo blockquote body br
+constant @all-tags = <a abbr address area article aside audio b base bdi bdo blockquote body br
     button canvas caption cite code col colgroup data datalist dd del details dfn dialog div
     dl dt em embed fieldset figcaption figure footer form h1 h2 h3 h4 h5 h6 head header hgroup
     hr html i iframe img input ins kbd label legend li link main map mark menu meta meter nav
@@ -17,28 +17,28 @@ constant @tags = <a abbr address area article aside audio b base bdi bdo blockqu
 #of which "empty" / "singular" tags from https://www.tutsinsider.com/html/html-empty-elements/
 constant @singular-tags = <area base br col embed hr img input link meta param source track wbr>;
 
-my @regular-tags = ( @tags.Set (-) @singular-tags.Set ).List;
+my @regular-tags = (@all-tags.Set (-) @singular-tags.Set ).List;
 
-sub list-tags is export { @tags.sort }
+sub list-tags is export {@all-tags.sort }
 sub list-singulars is export { @singular-tags.sort }
 sub list-regulars is export { @regular-tags.sort }
 
 # Export them so that `h1("text")` makes `<h1>text</h1>` and so on
 # eg sub h1(Str $inner) {do-tag 'h1', $inner}
 
-sub do-tag( $tag, $inner, *%h ) {
+sub do-tag( $tag, $inner?, *%h ) {
 
-    my Str $attrs = (+%h ?? ' ' !! '') ~ %h.map({ .key ~ '="' ~ .value ~ '"'  }).join(' ');
+    my $attrs = +%h ?? (' ' ~ %h.map({.key ~ '="' ~ .value ~ '"'}).join(' ') ) !! '';
 
-    '<' ~ $tag ~ $attrs ~ '>' ~ $inner ~ '</' ~ $tag ~ '>'
+    '<' ~ $tag ~ $attrs ~ '>' ~ ($inner // '') ~ '</' ~ $tag ~ '>'
 }
 
 # put in all the tags programmatically
 # viz. https://docs.raku.org/language/modules#Exporting_and_selective_importing
 
 my package EXPORT::DEFAULT {
-    for @tags -> $tag {
-        OUR::{'&' ~ $tag} := sub ($inner, *%h) { do-tag( "$tag", $inner, |%h ) }
+    for @all-tags -> $tag {
+        OUR::{'&' ~ $tag} := sub ($inner?, *%h) { do-tag( "$tag", $inner, |%h ) }
     }
 }
 
