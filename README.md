@@ -11,7 +11,7 @@ TODOS
 
 - [x] Get a definitive list of HTML tags
 - [x] Export them so that `h1("text")` makes `<h1>text</h1>` and so on
-- [ ] Pass and format the HTMX attributes
+- [x] Pass and format the HTMX attributes
 - [ ] Bring in synopsis from design
 - [ ] Do the ¶ term
 - [ ] Make a parse script (& instructions how to watch a dir)
