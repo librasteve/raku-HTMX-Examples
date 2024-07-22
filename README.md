@@ -22,6 +22,7 @@ TODOS
 
 #### Follow On
 
+- [ ] consider adding back end template to this module (like this https://github.com/Konfuzian/htmx-examples-with-flask/tree/main)
 - [ ] CSS - try some alternatives, read some stuff, make a plan
 - [ ] Cro - how to integrate HTMX Static pages with Cro backend
 - [ ] Hummingbird - ditto for HB

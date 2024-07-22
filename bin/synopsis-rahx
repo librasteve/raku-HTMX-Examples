@@ -3,15 +3,22 @@ use v6.d;
 
 use HTMX;
 
+put +list-tags;
+put +list-singulars;
+put +list-regulars;
+
 
 say h1('text', :class<jumbotron>);
 
 say div (:class<jumbotron>, <xx>);
 
-#my $page = HTMX.new;
-#
-#$page.body =
 
+
+
+
+
+#my $page =
+#
 #    div (:class<jumbotron>,);
 #         [
 #             h1 "Welcome to Dunder Mifflin!",
@@ -25,5 +32,3 @@ say div (:class<jumbotron>, <xx>);
 #         ]
 #    );
 #
-#
-#say $page.render;

@@ -13,10 +13,7 @@
   "provides": {
     "HTMX": "lib/HTMX.rakumod"
   },
-  "resources": [
-    "html5-tags-w3schools.csv",
-    "html5-tags-list.csv"
-  ],
+  "resources": [],
   "license": "Artistic-2.0",
   "tags": [],
   "source-url": ""
