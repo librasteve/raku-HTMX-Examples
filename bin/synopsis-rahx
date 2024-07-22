@@ -4,7 +4,7 @@ use v6.d;
 use HTMX;
 
 
-
+say list-regulars;
 
 say h1('text', :class<jumbotron>);
 say h1 :class<doobie>;

@@ -17,16 +17,16 @@ constant @all-tags = <a abbr address area article aside audio b base bdi bdo blo
 #of which "empty" / "singular" tags from https://www.tutsinsider.com/html/html-empty-elements/
 constant @singular-tags = <area base br col embed hr img input link meta param source track wbr>;
 
-my @regular-tags = (@all-tags.Set (-) @singular-tags.Set ).List;
+my @regular-tags = (@all-tags.Set (-) @singular-tags.Set).keys;
 
 sub list-tags is export {@all-tags.sort }
 sub list-singulars is export { @singular-tags.sort }
-sub list-regulars is export { @regular-tags.sort }
+sub list-regulars is export { @regular-tags }
 
 # Export them so that `h1("text")` makes `<h1>text</h1>` and so on
 # eg sub h1(Str $inner) {do-tag 'h1', $inner}
 
-sub do-tag( $tag, $inner?, *%h ) {
+sub do-regular-tag( $tag, $inner?, *%h ) {
 
     my $attrs = +%h ?? (' ' ~ %h.map({.key ~ '="' ~ .value ~ '"'}).join(' ') ) !! '';
 
@@ -37,8 +37,8 @@ sub do-tag( $tag, $inner?, *%h ) {
 # viz. https://docs.raku.org/language/modules#Exporting_and_selective_importing
 
 my package EXPORT::DEFAULT {
-    for @all-tags -> $tag {
-        OUR::{'&' ~ $tag} := sub ($inner?, *%h) { do-tag( "$tag", $inner, |%h ) }
+    for @regular-tags -> $tag {
+        OUR::{'&' ~ $tag} := sub ($inner?, *%h) { do-regular-tag( "$tag", $inner, |%h ) }
     }
 }
 
