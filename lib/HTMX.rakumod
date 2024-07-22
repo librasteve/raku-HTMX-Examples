@@ -33,12 +33,23 @@ sub do-regular-tag( $tag, $inner?, *%h ) {
     '<' ~ $tag ~ $attrs ~ '>' ~ ($inner // '') ~ '</' ~ $tag ~ '>'
 }
 
+sub do-singular-tag( $tag, *%h ) {
+
+    my $attrs = +%h ?? (' ' ~ %h.map({.key ~ '="' ~ .value ~ '"'}).join(' ') ) !! '';
+
+    '<' ~ $tag ~ $attrs ~ ' />'
+}
+
 # put in all the tags programmatically
 # viz. https://docs.raku.org/language/modules#Exporting_and_selective_importing
 
 my package EXPORT::DEFAULT {
     for @regular-tags -> $tag {
         OUR::{'&' ~ $tag} := sub ($inner?, *%h) { do-regular-tag( "$tag", $inner, |%h ) }
+    }
+
+    for @singular-tags -> $tag {
+        OUR::{'&' ~ $tag} := sub (*%h) { do-singular-tag( "$tag", |%h ) }
     }
 }
 
