@@ -5,3 +5,25 @@ use HTMX;
 
 
 say h1('text', :class<jumbotron>);
+
+say div (:class<jumbotron>, <xx>);
+
+#my $page = HTMX.new;
+#
+#$page.body =
+
+#    div (:class<jumbotron>,);
+#         [
+#             h1 "Welcome to Dunder Mifflin!",
+#
+#                 p  "Dunder Mifflin Inc. (stock symbol {strong 'DMI'}" ~
+#                     q:to/END/;
+#                is a micro-cap regional paper and office
+#                supply distributor with an emphasis on servicing
+#                small-business clients.
+#            END
+#         ]
+#    );
+#
+#
+#say $page.render;

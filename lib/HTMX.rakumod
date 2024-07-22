@@ -2,6 +2,42 @@ unit class HTMX;
 
 constant term:<¶> = $?NL;
 
+has $.head;
+has $.body is rw;
+has $.foot;
+
+method TWEAK {
+
+    $!head //= q:to/ENDHEAD/;
+        <!doctype html>
+            <html lang="en">
+            <head>
+            <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <meta name="description" content="blah, blah...">
+                <title>Raku HTMX</title>
+                <link rel="canonical" href="https://mysiteurl">
+                <link rel="stylesheet" href="/css/site.css">
+                <script src="/js/htmx.js"></script>
+                <script src="/js/class-tools.js"></script>
+                <script src="/js/preload.js"></script>
+                <script src="/js/_hyperscript.js"></script>
+            </head>
+            <body>
+    ENDHEAD
+
+    $!foot //= q:to/ENDFOOT/;
+                <script async defer src="https://buttons.github.io/buttons.js"></script>
+            </body>
+            </html>
+    ENDFOOT
+
+}
+
+method render {
+    $!head ~ $!body ~ $!foot
+}
+
 
 ##### HTMX Tag Export #####
 
