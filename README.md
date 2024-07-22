@@ -9,10 +9,13 @@ TODOS
 
 #### Minimum Lovable Product (`MLP`)
 
-- [ ] Get a definitive list of HTML tags
-- [ ] Export them so that `h1("text")` makes `<h1>text</h1>` and so on
+- [x] Get a definitive list of HTML tags
+- [x] Export them so that `h1("text")` makes `<h1>text</h1>` and so on
+- [x] Pass and format the HTMX attributes
+- [ ] Bring in synopsis from design
 - [ ] Do the ¶ term
 - [ ] Make a parse script (& instructions how to watch a dir)
+- [ ] Write some tests
 - [ ] Write some docs in POD6
 - [ ] Release with App::Mi6
 - [ ] Publish as raku-htmx on the htmx Discord
