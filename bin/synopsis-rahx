@@ -4,4 +4,32 @@ use v6.d;
 use HTMX;
 
 
+say list-regulars;
+
 say h1('text', :class<jumbotron>);
+say h1 :class<doobie>;
+
+say div :class<jumbotron>, 'xx';
+
+say br;
+
+
+
+
+
+
+#my $page =
+#
+#    div (:class<jumbotron>,);
+#         [
+#             h1 "Welcome to Dunder Mifflin!",
+#
+#                 p  "Dunder Mifflin Inc. (stock symbol {strong 'DMI'}" ~
+#                     q:to/END/;
+#                is a micro-cap regional paper and office
+#                supply distributor with an emphasis on servicing
+#                small-business clients.
+#            END
+#         ]
+#    );
+#
