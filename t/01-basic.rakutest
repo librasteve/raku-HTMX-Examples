@@ -1,6 +1,13 @@
 use Test;
 use HTMX;
 
-pass "replace me";
+is h1('text', :class<jumbotron>), '<h1 class="jumbotron">text</h1>',        'h1';
+
+is h1(:class<doobie>), '<h1 class="doobie"></h1>',                           'empty';
+
+is div(:class<jumbotron>, 'xx'), '<div class="jumbotron">xx</div>',         'regular';
+
+is hr, '<hr />',                                                            'singluar';
+
 
 done-testing;
