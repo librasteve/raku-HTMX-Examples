@@ -4,7 +4,7 @@ Contributions welcome - by PR please if possible.
 
 See [Issues](https://github.com/librasteve/raku-HTMX/issues/1) for active feature discussions.
 
-NAME
+HTMX
 ====
 
 This module provides a programmatic style for HTML and HTMX ([htmx.org]) web content.
