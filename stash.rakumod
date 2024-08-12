@@ -1,5 +1,7 @@
 use v6.d;
 
+#`[I found this lying around (in Cro?) and think it would be good to repurpose for the HTMX world so that we have examples of OO htmx pages]
+
 my $page = Page.new:
     Html => Html.new:
         Head => Head.new:

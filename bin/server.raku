@@ -3,7 +3,7 @@ use v6.d;
 
 use Cro::HTTP::Router;
 use Cro::HTTP::Server;
-use Cro::HTTP::Log;
+#use Cro::HTTP::Log;
 
 my $dynamic-routes-supply = Supply.new;
 
@@ -39,5 +39,3 @@ react whenever signal(SIGINT) {
     $server.stop;
     exit;
 }
-
-# $dynamic-routes-supply.emit({ path => 'dynamic', response => 'This is a dynamic route' }).
