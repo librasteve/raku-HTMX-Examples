@@ -1,118 +1,113 @@
-unit class HTMOO;
 
 #`[
-I found this lying around (in Cro?) and think it would be good to repurpose for the HTMX world so that we have examples of OO htmx pages
-
-This has the superpower of defaults and overrrides
+Model page using OO
+This has the superpowers of defaults and overrrides
+Newline is inner to outer
 #]
 
-class Meta {
-    has $.name;
-    has $.content;
+role Meta {
+    has Pair $.pair = :charset<utf-8>;
 
     method render {
-        '<meta name="' ~ $!name ~ '" content="' ~ $!content ~ '">' ~ "\n"
+        '<meta name="' ~ $!pair.key ~ '" content="' ~ $!pair.value ~ '">' ~ "\n"
     }
 }
 
-class Title {
-    has $.text;
+role Title {
+    has Str $.text = '';
 
     method render {
         '<title>' ~ $!text ~ '</title>' ~ "\n"
     }
 }
 
-class Script {
-    has $.src;
+role Script {
+    has Str $.src = '';
 
     method render {
         '<script src="' ~ $!src ~ '"></script>' ~ "\n"
     }
 }
 
-class Link {
-    has $.rel;
-    has $.href;
+role Link {
+    has Str $.rel = '';
+    has Str $.href = '';
 
     method render {
         '<link rel="' ~ $!rel ~ '" href="' ~ $!href ~ '">' ~ "\n"
     }
 }
 
-class Style {
-    has $.css;
+role Style {
+    has Str $.css = 'p {color: blue;}';
 
     method render {
-        "$!css\n"
+        "<style>\n" ~
+        "$!css\n" ~
+        "</style>\n"
     }
 }
 
-class Head {
-    has Meta   @.metas;
-    has Title  $.title;
-    has Script @.scripts;
-    has Link   @.links;
-    has Style  $.style;
+role Head {
+    has Meta   @.metas   = [Meta.new];
+    has Title  $.title   =  Title.new;
+    has Script @.scripts = [Script.new];
+    has Link   @.links   = [Link.new];
+    has Style  $.style   =  Style.new;
 
     method render {
-        { .render for @!metas   } ~ "\n" ~
-        $!title.render            ~ "\n" ~
-        { .render for @!scripts } ~ "\n" ~
-        { .render for @!links   } ~ "\n" ~
-        $!style.render            ~ "\n"
+        "<head>\n"                         ~
+        "{ (.render for @!metas  ).join }" ~
+        $!title.render                     ~
+        "{ (.render for @!scripts).join }" ~
+        "{ (.render for @!links  ).join }" ~
+        $!style.render                     ~
+        "</head>\n"
+
     }
 }
 
-class Body {
-    has $.text;
+role Body {
+    has Str $.text = "<p>Hello World!</p>";
 
     method render {
-        "$!text\n"
+        "<body>\n" ~
+        "$!text\n" ~
+        "</body>\n"
     }
 }
 
-class Html {
-    has Head $.head;
-    has Body $.body;
+role Html {
+    has Head $.head .= new;
+    has Body $.body .= new;
 
     method render {
-        $!head.render ~ "\n" ~
-        $!body.render ~ "\n"
+        $!head.render ~
+        $!body.render
     }
 }
 
-class Page {
+role Page {
     has $.doctype = 'html';
-    has Html $.html;
+    has Html $.html .= new;
 
     method render {
         "<!doctype $!doctype>\n" ~
-        $!html.render ~ "\n"
+        "<html>\n"               ~
+        $!html.render            ~
+        "</html>"
     }
 }
 
-# example ... refactor to .new iamerejh
-my $page = Page.new:
-    Html => Html.new: (
-        Head => ( Head.new:
-            Meta => [
-                Meta.new: m1,
-                Meta.new: m2
-            ],
-            Title => Title.new: text => "a title",
-            Script => [
-                Script.new: s1,
-                Script.new: s2
-            ],
-            Link => [
-                Link.new: l1,
-            ],
-            Style => [
-                Style.new: s1,
-            ]
-        ),
-        Body => Body.new: text => $bt,
-    ),
-;  #iamerejh
+
+#`[
+my $static = './static/index.html';
+my %assets = ( js => './static/js', css => './static/js', images => './static/images' );
+my $routes = './lib/Routes.rakumod';
+
+spurt $page.render-static $static;
+spurt $page.render-assets %assets;
+spurt $page.render-routes $routes;
+#]
+
 

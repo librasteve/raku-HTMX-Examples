@@ -8,11 +8,12 @@
   ],
   "auth": "zef:librasteve",
   "depends": [
-    "Cro""
+    "cro"
   ],
   "build-depends": [],
   "test-depends": [],
   "provides": {
+    "HTMOO": "lib/HTMOO.rakumod",
     "HTMX": "lib/HTMX.rakumod"
   },
   "resources": [],

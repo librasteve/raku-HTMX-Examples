@@ -82,6 +82,35 @@ TODOS
 - [ ] Release with App::Mi6
 - [ ] Publish as raku-htmx on the htmx Discord
 
+Typical deployment dir structure:
+~/foo > tree
+.
+├── Dockerfile
+├── META6.json
+├── README.md
+├── lib
+│   └── Routes.rakumod
+├── service.raku
+└── static
+    ├── css
+    ├── images
+    ├── index.html
+    └── js
+
+
+How to launch cro + HTMX:
+- Install modules `zef install --/test cro HTMX`
+- Use cro to make a stub service `cro stub http foo foo`
+- `cd foo`
+- Use HTMX / HTMOO to make your website and place it in `./static`
+  -  
+- Use rahx to htmx `rahx stub foo`
+  - reads .rahx.yml for config data
+  - make static index.html, place in foo/static and with static route
+  - puts static js, css, etc in static/ with static route
+  - make dynamic routes based on 
+
+
 #### Follow On
 
 - [ ] consider adding back end template to this module (like this https://github.com/Konfuzian/htmx-examples-with-flask/tree/main)
