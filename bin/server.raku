@@ -10,12 +10,12 @@ my $application = route {
     }
 }
 
-my Cro::Service $hello = Cro::HTTP::Server.new:
+my Cro::Service $service = Cro::HTTP::Server.new:
     :host<localhost>, :port<10000>, :$application;
 
-$hello.start;
+$service.start;
 
-react whenever signal(SIGINT) { $hello.stop; exit; }
+react whenever signal(SIGINT) { $service.stop; exit; }
 
 #raku server.raku
 #lynx localhost:10000/greet/librasteve

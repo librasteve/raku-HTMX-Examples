@@ -9,7 +9,7 @@ NAME
 
 This module provides a programmatic style for HTML and HTMX ([htmx.org]) web content.
 
-For now it's missing the server side piece, likely will start with Hummingbird.
+For now it's missing the server side piece, likely will start with Cro.
 
 SYNOPSIS
 ========
@@ -92,6 +92,7 @@ TODOS
 
 #### Rejected
 - [ ] Do the ¶ term - NOPE this messes with editor code preview
+
 
 AUTHOR
 ======

@@ -16,10 +16,10 @@ class Meta {
 }
 
 class Title {
-    has $.title;
+    has $.text;
 
     method render {
-        '<title>' ~ $!title ~ '</title>' ~ "\n"
+        '<title>' ~ $!text ~ '</title>' ~ "\n"
     }
 }
 
@@ -94,11 +94,25 @@ class Page {
 
 # example ... refactor to .new iamerejh
 my $page = Page.new:
-    Html => Html.new:
-        Head => Head.new:
+    Html => Html.new: (
+        Head => ( Head.new:
             Meta => [
                 Meta.new: m1,
                 Meta.new: m2
             ],
-            Title => Title.new:
+            Title => Title.new: text => "a title",
+            Script => [
+                Script.new: s1,
+                Script.new: s2
+            ],
+            Link => [
+                Link.new: l1,
+            ],
+            Style => [
+                Style.new: s1,
+            ]
+        ),
+        Body => Body.new: text => $bt,
+    ),
+;  #iamerejh
 
