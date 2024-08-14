@@ -5,98 +5,166 @@ This has the superpowers of defaults and overrrides
 Newline is inner to outer
 #]
 
-role Meta {
-    has Pair $.pair = :charset<utf-8>;
+## FIXME these sub are [improved] dupes of HTMX.rakumod
 
-    method render {
-        '<meta name="' ~ $!pair.key ~ '" content="' ~ $!pair.value ~ '">' ~ "\n"
+sub attrs(%h) {
+    +%h ?? (' ' ~ %h.map({.key ~ '="' ~ .value ~ '"'}).join(' ') ) !! ''
+}
+
+sub opener($tag, *%h) {
+    '<' ~ $tag ~ attrs(%h) ~ '>'
+}
+
+sub closer($tag) {
+    '</' ~ $tag ~ '>' ~ "\n"
+}
+
+sub do-regular-tag( $tag, *@inners, *%h ) {
+    given @inners {
+        when * <= 1 {
+            opener($tag, |%h) ~ @inners.join ~ closer($tag)
+        }
+        when * >= 2 {
+            opener($tag, |%h) ~ "\n  " ~ @inners.join("\n  ") ~ "\n" ~ closer($tag)
+        }
     }
 }
 
-role Title {
-    has Str $.text = '';
+sub do-singular-tag( $tag, *%h ) {
+    '<' ~ $tag ~ attrs(%h) ~ ' />' ~ "\n"
+}
+
+subset Tag  of Str;
+subset Attr of Str;
+
+class Meta {
+    has Tag  $.tag = 'meta';
+    has Attr() %.attrs;   #coercion is friendly to attr values with spaces
 
     method render {
-        '<title>' ~ $!text ~ '</title>' ~ "\n"
+        do-singular-tag( $!tag, |%!attrs )
     }
 }
 
-role Script {
-    has Str $.src = '';
+class Title {
+    has Tag  $.tag = 'title';
+    has Str  $.inner;
 
     method render {
-        '<script src="' ~ $!src ~ '"></script>' ~ "\n"
+        do-regular-tag($!tag, [$!inner])
     }
 }
 
-role Link {
-    has Str $.rel = '';
-    has Str $.href = '';
+class Script {
+    has Tag  $.tag = 'script';
+    has Str  $.src;
+
+    method attrs {
+        {src => $!src}
+    }
 
     method render {
-        '<link rel="' ~ $!rel ~ '" href="' ~ $!href ~ '">' ~ "\n"
+        do-regular-tag( $!tag, |$.attrs )
     }
 }
 
-role Style {
-    has Str $.css = 'p {color: blue;}';
+class Link {
+    has Tag  $.tag  = 'link';
+    has Attr %.attrs;
 
     method render {
-        "<style>\n" ~
-        "$!css\n" ~
-        "</style>\n"
+        do-singular-tag( $!tag, |%!attrs )
     }
 }
 
-role Head {
-    has Meta   @.metas   = [Meta.new];
-    has Title  $.title   =  Title.new;
-    has Script @.scripts = [Script.new];
-    has Link   @.links   = [Link.new];
-    has Style  $.style   =  Style.new;
+class Style {
+    has Tag  $.tag  = 'style';
+    has Str  $.css;
 
     method render {
-        "<head>\n"                         ~
-        "{ (.render for @!metas  ).join }" ~
-        $!title.render                     ~
-        "{ (.render for @!scripts).join }" ~
-        "{ (.render for @!links  ).join }" ~
-        $!style.render                     ~
-        "</head>\n"
+        do-regular-tag( $!tag, [$!css] )
+    }
+}
+
+class Head {
+    has Tag    $.tag = 'head';
+    has Meta   @.metas;
+    has Title  $.title is rw;
+    has Script @.scripts;
+    has Link   @.links;
+    has Style  $.style is rw;
+
+    method render {
+        opener($!tag)                 ~ "\n" ~
+        "{ (.render for  @!metas   ).join }" ~
+        "{ (.render with $!title   )}"       ~
+        "{ (.render for  @!scripts ).join }" ~
+        "{ (.render for  @!links   ).join }" ~
+        "{ (.render with $!style   )}"       ~
+        closer($!tag)
 
     }
 }
 
-role Body {
-    has Str $.text = "<p>Hello World!</p>";
+class Body {
+    has Tag   $.tag = 'body';
+    has Str() $.inner;
 
     method render {
-        "<body>\n" ~
-        "$!text\n" ~
-        "</body>\n"
+        opener($!tag)   ~ "\n" ~
+        $!inner         ~ "\n" ~
+        closer($!tag)
     }
 }
 
-role Html {
+class Html {
+    has Tag  $.tag   = 'html';
+    has Attr() %.attrs = {:lang<en>};
     has Head $.head .= new;
-    has Body $.body .= new;
+    has Body $.body is rw;
 
     method render {
-        $!head.render ~
-        $!body.render
+        opener($!tag, |%!attrs) ~ "\n" ~
+        $!head.render           ~
+        $!body.render           ~
+        closer($!tag)
     }
 }
 
-role Page {
+class Page {
     has $.doctype = 'html';
     has Html $.html .= new;
 
     method render {
         "<!doctype $!doctype>\n" ~
-        "<html>\n"               ~
-        $!html.render            ~
-        "</html>"
+        $!html.render
     }
+
+    #some setter methods
+    method meta(%attrs) {
+        self.html.head.metas.append: Meta.new(:%attrs)
+    }
+
+    method title($inner) {
+        self.html.head.title = Title.new(:$inner)
+    }
+
+    method script(:$src) {
+        self.html.head.scripts.append: Script.new(:$src)
+    }
+
+    method link(%attrs) {
+        self.html.head.links.append: Link.new(:%attrs)
+    }
+
+    method style($css) {
+        self.html.head.style = Style.new(:$css)
+    }
+
+    method body($inner) {
+        self.html.body = Body.new(:$inner)
+    }
+
 }
 
 
