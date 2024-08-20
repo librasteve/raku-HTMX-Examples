@@ -32,11 +32,14 @@ sub do-regular-tag( $tag, *@inners, *%h ) {
     my $closer = '</' ~ $tag ~ '>';
 
     given @inners {
-        when * <= 1 {
-            $opener ~ @inners.join ~ $closer
+        when * == 0 {
+            $opener ~ $closer;
+        }
+        when * == 1 {
+            $opener ~ @inners.first ~ $closer;
         }
         when * >= 2 {
-            $opener ~ "\n  " ~ @inners.join("\n  ") ~ "\n" ~ $closer
+            $opener ~ @inners.join ~ $closer;
         }
     }
 

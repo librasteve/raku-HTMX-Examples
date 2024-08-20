@@ -22,16 +22,16 @@ $p.meta: {:charset<utf-8>};
 $p.meta: {:name<viewport>, :content<width=device-width, initial-scale=1>};
 $p.meta: {:name<description>, :content<raku does htmx>};
 
+$p.link: {:rel<stylesheet>, :href<https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css> };
+
 $p.title: "Raku HTMX";
 $p.script: :src<https://unpkg.com/htmx.org@1.7.0>;
 
-$p.link: {:rel<stylesheet>, :href<https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css> };
-
-$p.style:   q:to/END/;
-                .jumbotron {
-                  background-color: #e6ffe6;
-                  text-align: center;
-                }
+$p.style: q:to/END/;
+            .jumbotron {
+              background-color: #e6ffe6;
+              text-align: center;
+            }
             END
 
 $p.body: [

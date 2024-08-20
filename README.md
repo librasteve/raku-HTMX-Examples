@@ -76,7 +76,8 @@ TODOS
 - [x] Export them so that `h1("text")` makes `<h1>text</h1>` and so on
 - [x] Pass and format the HTMX attributes
 - [x] Bring in synopsis from design
-- [ ] Make a parse script (& instructions how to watch a dir)
+- [ ] Make a parse script to get routes (likely will want a grammar)
+  - ```<p hx-get="https://v2.jokeapi.dev/joke/Any?format=txt&safe-mode">Click Me</p>```
 - [x] Write some tests
 - [ ] Write some docs in POD6
 - [ ] Release with App::Mi6
@@ -97,13 +98,30 @@ Typical deployment dir structure:
     ├── index.html
     └── js
 
+https://cro.services/docs/reference/cro-http-router
+
+my $app = route {
+get -> 'test' {
+content 'text/html', q:to/HTML/;
+<h1>Did you know...</h1>
+<p>
+Aside from fingerprints, everyone has a unique tongue print
+too. Lick to login could really be a thing.
+</p>
+HTML
+}
+}
+
 
 How to launch cro + HTMX:
 - Install modules `zef install --/test cro HTMX`
 - Use cro to make a stub service `cro stub http foo foo`
 - `cd foo`
 - Use HTMX / HTMOO to make your website and place it in `./static`
-  -  
+  - add method chains to HTMOO
+  - add image tag to HTMOO
+  - add role Party (a Part is a div)
+  - add Container(s) - ie flexbox and grid
 - Use rahx to htmx `rahx stub foo`
   - reads .rahx.yml for config data
   - make static index.html, place in foo/static and with static route
