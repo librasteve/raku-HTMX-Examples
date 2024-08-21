@@ -6,6 +6,7 @@ Newline is inner to outer
 #]
 
 ## FIXME these sub are [improved] dupes of HTMX.rakumod
+## FIXME but had to drop the newlines to avoid spaces
 
 sub attrs(%h) {
     +%h ?? (' ' ~ %h.map({.key ~ '="' ~ .value ~ '"'}).join(' ') ) !! ''
@@ -16,22 +17,25 @@ sub opener($tag, *%h) {
 }
 
 sub closer($tag) {
-    '</' ~ $tag ~ '>' ~ "\n"
+    '</' ~ $tag ~ '>'
 }
 
 sub do-regular-tag( $tag, *@inners, *%h ) {
     given @inners {
-        when * <= 1 {
-            opener($tag, |%h) ~ @inners.join ~ closer($tag)
+        when * == 0 {
+            opener($tag, |%h) ~ closer($tag)
+        }
+        when * == 1 {
+            opener($tag, |%h) ~ @inners.first ~ closer($tag)
         }
         when * >= 2 {
-            opener($tag, |%h) ~ "\n  " ~ @inners.join("\n  ") ~ "\n" ~ closer($tag)
+            opener($tag, |%h) ~ @inners.join ~ closer($tag)
         }
     }
 }
 
 sub do-singular-tag( $tag, *%h ) {
-    '<' ~ $tag ~ attrs(%h) ~ ' />' ~ "\n"
+    '<' ~ $tag ~ attrs(%h) ~ ' />'
 }
 
 subset Tag  of Str;

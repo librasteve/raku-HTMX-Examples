@@ -1,0 +1,25 @@
+#!/usr/bin/env raku
+
+#an experimental way to use raku OO to write websites
+
+role Styling does Color does Typography {
+
+}
+
+role Party does Layout does Styling {
+    method html { ... }
+    method css  { ... }
+}
+
+class MyBody is Body does Party {
+
+    method html {
+        use HTML::Functional;
+
+    }
+
+    method css {
+        use Slang::CSS;
+
+    }
+}
