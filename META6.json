@@ -12,9 +12,7 @@
   ],
   "build-depends": [],
   "test-depends": [],
-  "provides": {
-    "HTMOO": "lib/HTMOO.rakumod"
-  },
+  "provides": {},
   "resources": [],
   "license": "Artistic-2.0",
   "tags": [],
