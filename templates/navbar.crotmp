@@ -30,6 +30,6 @@
 
 <:sub content>
 <div class="right-wrapper" id="content">
-    <h3>Implementation of the <a href="https://htmx.org/examples/">htmx Examples</a> using a Flask server.</h3>
+    <h3>Implementation of the <a href="https://htmx.org/examples/">htmx Examples</a> using a Raku Cro server.</h3>
 </div>
 </:>
