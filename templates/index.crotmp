@@ -6,14 +6,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>htmx Examples</title>
+    <!-- pico css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <title>Raku Cro HTMX Examples</title>
 </head>
 
 <body hx-boost="true">
-
-    <&navbar>
-
-    <&content>
+    <header class="container">
+        <nav>
+          <ul>
+            <li><strong>Raku Cro HTMX</strong></li>
+          </ul>
+          <ul>
+            <li>
+              <details class="dropdown" >
+                <summary>
+                  Examples
+                </summary>
+                <&navbar>
+              </details>
+            </li>
+          </ul>
+        </nav>
+    </header>
+    <main class="container" id="content">
+      <&content>
+    </main>
+    <footer class="container">
+      <p style="font-size:0.6em"><i>Styled with <a href="https://picocss.com" target="new">pico</a>.</i></p>
+    </footer>
 
     <!-- htmx -->
     <script src="https://unpkg.com/htmx.org@1.9.5"
