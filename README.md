@@ -1,71 +1,57 @@
 **WORK IN PROGRESS**
 
-Contributions welcome - by PR please if possible.
+This branch is for the OO stylee
+See /bin/party-spike
 
-See [Issues](https://github.com/librasteve/raku-HTMX/issues/1) for active feature discussions.
+HMTL::OO DESIGN
+===============
 
-NAME
-====
+site
+    page[home]
+        header
+            nav
+        content
+            grid (rows, cols, fr s) | flexbox (direction, width)
+                image | text | heading
+        footer
 
-This module provides a programmatic style for HTML and HTMX ([htmx.org]) web content.
+nav
+    home | about | services | projects | contact
 
-For now it's missing the server side piece, likely will start with Cro.
 
-SYNOPSIS
-========
+aspects
+    site   == nav tree
+    layout == container tree
+    style  == css classes
 
-```raku
-use HTMX;
+source
+    md
+    htmx::function
+    htmoo::parts
 
-my $head = head [
-    meta( :charset<utf-8> ),
-    meta( :name<viewport>, :content<width=device-width, initial-scale=1> ),
-    meta( :name<description>, :content<raku does htmx> ),
+building a website...
 
-    title( "Raku HTMX" ),
+historically:
 
-    script( src  => "https://unpkg.com/htmx.org@1.7.0", ),
+a site is built as a set of html pages, connected a menu, with css to style elements and javascript to handle events
 
-    link(   rel  => "stylesheet",
-            href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
-    ),
-    style(
-        q:to/END/;
-            .jumbotron {
-              background-color: #e6ffe6;
-              text-align: center;
-            }
-        END
-    ),
-];
+this represents a separation of concerns: roughly speaking html as model, css as view and javascript as controller
 
-my $body = body [
-    div( :class<jumbotron>, [
-        h1("Welcome to Dunder Mifflin!"),                          #use parens to stop <h1> slurping <p>
-        p  "Dunder Mifflin Inc. (stock symbol {strong 'DMI'}) " ~
-            q:to/END/;
-            is a micro-cap regional paper and office
-            supply distributor with an emphasis on servicing
-            small-business clients.
-            END
-    ]),
+the downside is that this "hcj" construction divides the aspects into 3 monoliths that must be managed in parallel
 
-    p :hx-get<https://v2.jokeapi.dev/joke/Any?format=txt&safe-mode>,
-        "Click Me",
-];
+recently:
 
-my $html = html :lang<en>, [
-    $head,
-    $body,
-];
+a site is built as a single page application with frameworks such as react that compose elements and ship as javascript
 
-say "<!doctype html>$html";
-```
+the elements are hooked into event driven framework which propagates events and updates up and down
 
-DESCRIPTION
-===========
+the downside is that this react construction, while localizing mvc concerns, emphasizes dynamimism over content
 
-HTMX is ...
+and, alternatively:
+
+a site is built in a functional way with elm
+
+
 
 TODOS
 =====
