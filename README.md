@@ -2,7 +2,7 @@
 
 Contributions welcome - by PR please if possible.
 
-See [Issues](https://github.com/librasteve/raku-HTMX/issues) for feature discussions.
+See [Issues](https://github.com/librasteve/raku-HTMX-Examples/issues) for feature discussions.
 
 HTMX EXAMPLES
 =============
