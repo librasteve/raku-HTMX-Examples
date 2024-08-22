@@ -7,11 +7,13 @@
     "librasteve"
   ],
   "auth": "zef:librasteve",
-  "depends": [],
+  "depends": [
+    "cro"
+  ],
   "build-depends": [],
   "test-depends": [],
   "provides": {
-    "HTMX": "lib/HTMX.rakumod"
+    "HTMOO": "lib/HTMOO.rakumod"
   },
   "resources": [],
   "license": "Artistic-2.0",
