@@ -48,9 +48,9 @@ my %tp;
     %tp<default> :=
     div( :hx-target<this> :hx-swap<outerHTML>, [
         for ^@names -> \i {
-            div label @labels[i], @values[i]
+            p @labels[i], @values[i]
         }
-        button :hx-get("$base/edit") :class<btn btn-primary>, 'Click To Edit',
+        button :hx-get("$base/edit"), 'Click To Edit',
     ]);
 
     %tp<edit> :=
@@ -58,8 +58,8 @@ my %tp;
         for ^@names -> \i {
             div label @labels[i], input :type(@types[i]) :name(@names[i]) :value(@values[i])
         }
-        button :class<btn>,                  'Submit',
-        button :class<btn> :hx-get("$base"), 'Cancel',
+        button('Submit'),
+        button(:hx-get("$base"), 'Cancel'),
     ]);
 }
 

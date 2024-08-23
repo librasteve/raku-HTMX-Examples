@@ -1,0 +1,33 @@
+<:sub navbar>
+<ul hx-target="#content" hx-push-url="false" id="options">
+    <li><a href="/click_to_edit">1. Click to Edit</a></li>
+    <li><a href="/bulk_update">2. Bulk Update</a></li>
+    <li><a href="/click_to_load">3. Click to Load</a></li>
+    <li><a href="/delete_row">4. Delete Row</a></li>
+    <li><a href="/edit_row">5. Edit Row</a></li>
+    <li><a href="/lazy_loading">6. Lazy Loading</a></li>
+    <li><a href="/inline_validation">7. Inline Validation</a></li>
+    <li><a href="/infinite_scroll">8. Infinite Scroll</a></li>
+    <li><a href="/active_search">9. Active Search</a></li>
+    <li><a href="/progress_bar">10. Progress Bar</a></li>
+    <li><a href="/value_select">11. Value Select</a></li>
+    <li><a href="/animations">12. Animations</a></li>
+    <li><a href="/file_upload">13. File Upload</a></li>
+    <li><a href="/preserving_file_inputs">14. Preserving File Inputs</a></li>
+    <li><a href="/dialogs_browser">15. Dialogs - Browser</a></li>
+    <li><a href="/dialogs_uikit">16. Dialogs - UIKit</a></li>
+    <li><a href="/dialogs_bootstrap">17. Dialogs - Bootstrap</a></li>
+    <li><a href="/dialogs_custom">18. Dialogs - Custom</a></li>
+    <li><a href="/tabs_hateoas">19. Tabs (using HATEOAS)</a></li>
+    <li><a href="/tabs_hyperscript">20. Tabs (using Hyperscript)</a></li>
+    <li><a href="/keyboard_shortcuts">21. Keyboard Shortcuts</a></li>
+    <li><a href="/sortable">22. Sortable</a></li>
+    <li><a href="/updating_other_content">23. Updating Other Content</a></li>
+    <li><a href="/confirm">24. Confirm</a></li>
+</ul>
+</:>
+
+<:sub content>
+<h5>Implementation of the <a href="https://htmx.org/examples/">HTMX Examples</a> using a
+<a href="https://raku.org">Raku</a> <a href="https://cro.raku.com">Cro</a> server.</h5>
+</:>
