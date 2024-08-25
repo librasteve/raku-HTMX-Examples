@@ -28,6 +28,7 @@ Install raku - eg. from [rakubrew](https://rakubrew.org), then:
 - `zef install Cro::WebApp`
 - `git clone https://github.com/librasteve/raku-HTMX-Examples.git`
 - `cd raku-HTMX-Examples`
+- `zef install .`
 - `cro stub http examples examples`  (OK all the defaults)
 - `cp -R lib static templates ./examples`
 - `cd examples`
