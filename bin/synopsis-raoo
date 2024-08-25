@@ -1,7 +1,7 @@
 #!/usr/bin/env raku
 use v6.d;
 
-use HTMX;
+use HTML::Functional;
 use HTMOO;
 
 #`[

@@ -1,5 +1,5 @@
 use Test;
-use HTMX;
+use HTML::Functional;
 
 is h1('text', :class<jumbotron>).chomp, '<h1 class="jumbotron">text</h1>',        'h1';
 
