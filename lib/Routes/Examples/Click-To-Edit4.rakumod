@@ -43,7 +43,7 @@ my @types  = @names.map: { $_ ne 'email' ?? 'text' !! $_ };
 my %tp;
 
 {
-    use HTMX;    # will soon become use HTML::Lazy :ALL;
+    use HTML::Functional;
 
     %tp<default> :=
     div( :hx-target<this> :hx-swap<outerHTML>, [

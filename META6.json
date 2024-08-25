@@ -1,5 +1,5 @@
 {
-  "name": "HTMX",
+  "name": "HTMX::Examples",
   "description": "blah blah blah",
   "version": "0.0.1",
   "perl": "6.d",
@@ -8,7 +8,9 @@
   ],
   "auth": "zef:librasteve",
   "depends": [
-    "cro"
+    "cro",
+    "Cro::WebApp",
+    "HTML::Functional"
   ],
   "build-depends": [],
   "test-depends": [],

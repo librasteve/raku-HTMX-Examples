@@ -33,7 +33,7 @@ sub routes() is export {
             static 'static', @path;
         }
 
-        use Routes::Examples::Click-To-Edit4;
+        use Routes::Examples::Click-To-Edit2;
         include click_to_edit => click_to_edit-routes;
 
     }

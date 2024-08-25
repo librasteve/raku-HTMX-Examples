@@ -19,7 +19,7 @@ my $data = {
 my %tp;
 
 {
-    use HTMX;
+    use HTML::Functional;
 
     %tp<default> =
 
