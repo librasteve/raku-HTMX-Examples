@@ -28,10 +28,10 @@ sub bulk_update-routes() is export {
         },
     ]};
 
-    { .<index> = $++ } for |$data<contacts>;
+    { .<id> = $++ } for |$data<contacts>;
 
-    sub update(@indices, Status $status) {
-        for @indices -> \i {
+    sub update(Int @ids, Status $status) {
+        for @ids -> \i {
             $data<contacts>[i]<status> = $status;
         }
     }
