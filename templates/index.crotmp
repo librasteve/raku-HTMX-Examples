@@ -9,29 +9,31 @@
     <!-- pico css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <title>Raku Cro HTMX Examples</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+        }
+    </style>
 </head>
 
 <body hx-boost="true">
-    <header class="container">
-        <nav>
-          <ul>
-            <li><strong>Raku Cro HTMX</strong></li>
-          </ul>
-          <ul>
-            <li>
-              <details class="dropdown" >
-                <summary>
-                  Examples
-                </summary>
-                <&navbar>
-              </details>
-            </li>
-          </ul>
-        </nav>
+
+    <header class="container"">
+        <h3>Raku Cro HTMX Examples</h3>
     </header>
-    <main class="container" id="content">
-      <&content>
+
+    <main class="container">
+        <div class="grid-container">
+            <div>
+                <&navbar>
+            </div>
+            <div id="content">
+                <&content>
+            </div>
+        </div>
     </main>
+
     <footer class="container">
       <p style="font-size:0.6em"><i>Styled with <a href="https://picocss.com" target="new">pico</a>.</i></p>
     </footer>
