@@ -24,17 +24,21 @@ GETTING STARTED
 
 Install raku - eg. from [rakubrew](https://rakubrew.org), then:
 
+#### Install Cro
 - `zef install --/test cro`
 - `zef install Cro::WebApp`
+
+#### Install this repo
 - `git clone https://github.com/librasteve/raku-HTMX-Examples.git`
-- `cd raku-HTMX-Examples`
-- `zef install .`
+- `cd raku-HTMX-Examples` && `zef install .`
+
+#### Make a Cro server
 - `cro stub http examples examples`  (OK all the defaults)
 - `cp -R lib static templates ./examples`
-- `cd examples`
-- `cro run`
+
+#### Run and view it
+- `cd examples` && `cro run`
 - Open a browser and go to `http://localhost:20000`
-- Click `1 Click to Edit`
 
 You will note that cro has many other options as documented at [Cro](https://cro.raku.org) if you want to deploy to a production server.
 
