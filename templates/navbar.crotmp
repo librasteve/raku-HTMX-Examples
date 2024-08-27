@@ -1,30 +1,30 @@
 <:sub navbar>
-<ul hx-target="#content" hx-push-url="false" id="options">
-    <li><a href="/click_to_edit">1. Click to Edit</a></li>
-    <li><a href="/bulk_update">2. Bulk Update</a></li>
-    <li><a href="/click_to_load">3. Click to Load</a></li>
-    <li><a href="/delete_row">4. Delete Row</a></li>
-    <li><a href="/edit_row">5. Edit Row</a></li>
-    <li><a href="/lazy_loading">6. Lazy Loading</a></li>
-    <li><a href="/inline_validation">7. Inline Validation</a></li>
-    <li><a href="/infinite_scroll">8. Infinite Scroll</a></li>
-    <li><a href="/active_search">9. Active Search</a></li>
-    <li><a href="/progress_bar">10. Progress Bar</a></li>
-    <li><a href="/value_select">11. Value Select</a></li>
-    <li><a href="/animations">12. Animations</a></li>
-    <li><a href="/file_upload">13. File Upload</a></li>
-    <li><a href="/preserving_file_inputs">14. Preserving File Inputs</a></li>
-    <li><a href="/dialogs_browser">15. Dialogs - Browser</a></li>
-    <li><a href="/dialogs_uikit">16. Dialogs - UIKit</a></li>
-    <li><a href="/dialogs_bootstrap">17. Dialogs - Bootstrap</a></li>
-    <li><a href="/dialogs_custom">18. Dialogs - Custom</a></li>
-    <li><a href="/tabs_hateoas">19. Tabs (using HATEOAS)</a></li>
-    <li><a href="/tabs_hyperscript">20. Tabs (using Hyperscript)</a></li>
-    <li><a href="/keyboard_shortcuts">21. Keyboard Shortcuts</a></li>
-    <li><a href="/sortable">22. Sortable</a></li>
-    <li><a href="/updating_other_content">23. Updating Other Content</a></li>
-    <li><a href="/confirm">24. Confirm</a></li>
-</ul>
+<ol class="no-bullets"' hx-target="#content" hx-push-url="false" id="options">
+    <li><a href="/click_to_edit">Click to Edit</a></li>
+    <li><a href="/bulk_update">Bulk Update</a></li>
+    <li><a href="/click_to_load">Click to Load</a></li>
+    <li><a href="/delete_row">Delete Row</a></li>
+    <li><a href="/edit_row">Edit Row</a></li>
+    <li><a href="/lazy_loading">Lazy Loading</a></li>
+    <li><a href="/inline_validation">Inline Validation</a></li>
+    <li><a href="/infinite_scroll">Infinite Scroll</a></li>
+    <li><a href="/active_search">Active Search</a></li>
+    <li><a href="/progress_bar">Progress Bar</a></li>
+    <li><a href="/value_select">Value Select</a></li>
+    <li><a href="/animations">Animations</a></li>
+    <li><a href="/file_upload">File Upload</a></li>
+    <li><a href="/preserving_file_inputs">Preserving File Inputs</a></li>
+    <li><a href="/dialogs_browser">Dialogs - Browser</a></li>
+    <li><a href="/dialogs_uikit">Dialogs - UIKit</a></li>
+    <li><a href="/dialogs_bootstrap">Dialogs - Bootstrap</a></li>
+    <li><a href="/dialogs_custom">Dialogs - Custom</a></li>
+    <li><a href="/tabs_hateoas">Tabs (using HATEOAS)</a></li>
+    <li><a href="/tabs_hyperscript">Tabs (using Hyperscript)</a></li>
+    <li><a href="/keyboard_shortcuts">Keyboard Shortcuts</a></li>
+    <li><a href="/sortable">Sortable</a></li>
+    <li><a href="/updating_other_content">Updating Other Content</a></li>
+    <li><a href="/confirm">Confirm</a></li>
+</ol>
 </:>
 
 <:sub content>

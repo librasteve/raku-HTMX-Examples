@@ -10,15 +10,15 @@ sub immediate(Str $template-text, $inital-topic ) {
 }
 
 
-#| convert camel case names like 'firstName' to labels like 'First Name: '
+#| convert camel case fieldnames like 'firstName' to labels like 'First Name: '
 sub camel2label(Str $camel) {
-    $camel.subst( /(<lower>)(.*)(<upper>)?(.*)?/, {$0.uc~$1~($2//'')~($3//'')~': '} );
+    $camel.match(/ (<lower>+) (<upper><lower>+)* /)>>.tc.trim~":";
 }
 
 
 #| convert name to crotmp variable form eg. 'firstName' => '<.firstName>'
 sub crotmpvar(Str $name) {
-    $name.subst( /(.*)/, {"<.$0>"} );
+    "<.$name>";
 }
 
 
@@ -36,9 +36,11 @@ my @names  = <firstName lastName email>;
 
 ############################ View #############################
 
-my @labels = @names.map: *.&camel2label;
-my @values = @names.map: *.&crotmpvar;
+my @labels = @names.map: &camel2label;
+my @values = @names.map: &crotmpvar;
 my @types  = @names.map: { $_ ne 'email' ?? 'text' !! $_ };
+
+my @all = zip(@labels, @types, @names, @values);
 
 my %tp;
 
@@ -47,17 +49,19 @@ my %tp;
 
     %tp<default> :=
     div( :hx-target<this> :hx-swap<outerHTML>, [
-        for ^@names -> \i {
-            p @labels[i], @values[i]
-        }
+
+        zip(@labels, @values).flat.map: {p $^label, $^value}
+
         button :hx-get("$base/edit"), 'Click To Edit',
     ]);
 
     %tp<edit> :=
     form( :hx-put("$base"), :hx-target<this> :hx-swap<outerHTML>, [
-        for ^@names -> \i {
-            div label @labels[i], input :type(@types[i]) :name(@names[i]) :value(@values[i])
+
+        @all.map: -> ($label, $type, $name, $value) {
+            div label $label, input :$type, :$name, :$value
         }
+
         button('Submit'),
         button(:hx-get("$base"), 'Cancel'),
     ]);
