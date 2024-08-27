@@ -1,8 +1,26 @@
-<div hx-target="this" hx-swap="outerHTML">
-    <div><p>First Name: <.firstName></p></div>
-    <div><p>Last Name:  <.lastName></p></div>
-    <div><p>Email:      <.email></p></div>
-    <button hx-get="/click_to_edit/contact/0/edit">
-        Click To Edit
-    </button>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>ID</th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+        <@contacts>
+        <tr class="">
+            <td><.name></td>
+            <td><.email></td>
+            <td><.id></td>
+        </tr>
+        </@>
+        <tr id="replaceMe">
+            <td colspan="3">
+                <button class='btn' hx-get="/click_to_load/contacts?page=<.next>" hx-target="#replaceMe"
+                    hx-swap="outerHTML">
+                    Load More Agents... <img class="htmx-indicator" src="/img/bars.svg">
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
