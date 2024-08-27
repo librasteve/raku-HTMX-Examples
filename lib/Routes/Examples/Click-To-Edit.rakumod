@@ -15,13 +15,6 @@ sub camel2label(Str $camel) {
     $camel.match(/ (<lower>+) (<upper><lower>+)* /)>>.tc.trim~":";
 }
 
-
-#| convert name to crotmp variable form eg. 'firstName' => '<.firstName>'
-sub crotmpvar(Str $name) {
-    "<.$name>";
-}
-
-
 ############################ Model ############################
 
 my $base = 'click_to_edit/contact/0';
@@ -37,25 +30,25 @@ my @names  = <firstName lastName email>;
 ############################ View #############################
 
 my @labels = @names.map: &camel2label;
-my @values = @names.map: &crotmpvar;
+my @values = @names.map: { "<.$_>" };
 my @types  = @names.map: { $_ ne 'email' ?? 'text' !! $_ };
 
 my @all = zip(@labels, @types, @names, @values);
 
-my %tp;
+my %crotmp;
 
 {
     use HTML::Functional;
 
-    %tp<default> :=
+    %crotmp<index> :=
     div( :hx-target<this> :hx-swap<outerHTML>, [
 
-        zip(@labels, @values).flat.map: {p $^label, $^value}
+        zip(@labels, @values).flat.map: { p $^label, $^value }
 
         button :hx-get("$base/edit"), 'Click To Edit',
     ]);
 
-    %tp<edit> :=
+    %crotmp<edit> :=
     form( :hx-put("$base"), :hx-target<this> :hx-swap<outerHTML>, [
 
         @all.map: -> ($label, $type, $name, $value) {
@@ -72,11 +65,11 @@ my %tp;
 sub click_to_edit-routes() is export {
     route {
         get -> {
-            immediate %tp<default>, $data;
+            immediate %crotmp<index>, $data;
         }
 
-        get -> 'contact', Int $id, Str $action='default'  {
-            immediate %tp{$action}, $data;
+        get -> 'contact', Int $id, Str $action='index'  {
+            immediate %crotmp{$action}, $data;
         }
 
         put -> 'contact', Int $id  {
@@ -85,7 +78,7 @@ sub click_to_edit-routes() is export {
                 $data{$_} = %fields{$_} for $data.keys;
             }
 
-            immediate %tp<default>, $data;
+            immediate %crotmp<index>, $data;
         }
     }
 }
