@@ -2,15 +2,14 @@ use Cro::HTTP::Router;
 use Cro::WebApp::Template;
 
 sub click_to_load-routes() is export {
-    my $size = 10;
 
-    sub gen-id { ('A'..'Z',0..9).flat.roll($size).join }
+    sub gen-id { ('A'..'Z',0..9).flat.roll(10).join }
 
     sub gen-contact($i, $page) {
-        {name=>"Agent Smith", email=>"void{$page*$size+$i}@null.org", id=>gen-id}
+        {name=>"Agent Smith", email=>"void{$page*10+$i}@null.org", id=>gen-id}
     }
     
-    sub gen-contacts($page=1) { [.&gen-contact($page) for ^$size] }
+    sub gen-contacts($page=1) { [.&gen-contact($page) for ^10] }
 
     route {
         template-location 'templates/click_to_load';
