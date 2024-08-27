@@ -1,0 +1,8 @@
+<div hx-target="this" hx-swap="outerHTML">
+    <div><p>First Name: <.firstName></p></div>
+    <div><p>Last Name:  <.lastName></p></div>
+    <div><p>Email:      <.email></p></div>
+    <button hx-get="/click_to_edit/contact/0/edit">
+        Click To Edit
+    </button>
+</div>

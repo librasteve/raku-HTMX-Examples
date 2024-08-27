@@ -19,5 +19,8 @@ sub routes() is export {
         use Routes::Examples::Bulk-Update;
         include bulk_update => bulk_update-routes;
 
+        use Routes::Examples::Click-To-Load;
+        include click_to_load => click_to_load-routes;
+
     }
 }
