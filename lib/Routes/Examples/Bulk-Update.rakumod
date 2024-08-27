@@ -30,7 +30,8 @@ sub bulk_update-routes() is export {
 
     { .<id> = $++ } for |$data<contacts>;
 
-    sub update(Int @ids, Status $status) {
+    sub update(@ids, Status $status) {
+        warn @ids.raku;
         for @ids -> \i {
             $data<contacts>[i]<status> = $status;
         }
@@ -46,7 +47,7 @@ sub bulk_update-routes() is export {
         put -> 'activate' {
 
             request-body -> %fields {
-                update(%fields<ids>, Active);
+                update([|%fields<ids>], Active);
             }
 
             template 'index.crotmp', $data;
@@ -55,7 +56,7 @@ sub bulk_update-routes() is export {
         put -> 'deactivate' {
 
             request-body -> %fields {
-                update(%fields<ids>, Inactive);
+                update([|%fields<ids>], Inactive);
             }
 
             template 'index.crotmp', $data;

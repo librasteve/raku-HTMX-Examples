@@ -1,20 +1,28 @@
 {
-  "name": "HTMX",
-  "description": "blah blah blah",
-  "version": "0.0.1",
-  "perl": "6.d",
+  "auth": "zef:librasteve",
   "authors": [
     "librasteve"
   ],
-  "auth": "zef:librasteve",
+  "build-depends": [
+  ],
   "depends": [
     "cro"
   ],
-  "build-depends": [],
-  "test-depends": [],
-  "provides": {},
-  "resources": [],
+  "description": "blah blah blah",
   "license": "Artistic-2.0",
-  "tags": [],
-  "source-url": ""
+  "name": "Routes",
+  "perl": "6.d",
+  "provides": {
+    "Routes": "lib/Routes.rakumod",
+    "Routes::Examples::Bulk-Update": "lib/Routes/Examples/Bulk-Update.rakumod",
+    "Routes::Examples::Click-To-Edit": "lib/Routes/Examples/Click-To-Edit.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/librasteve/raku-HTMX-Examples.git",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
 }

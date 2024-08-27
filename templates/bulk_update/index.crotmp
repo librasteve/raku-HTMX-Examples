@@ -1,0 +1,26 @@
+<form id="checked-contacts">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <@contacts>
+            <tr class="">
+                <td><input type='checkbox' name='ids' value='<.id>'></td>
+                <td><.name></td>
+                <td><.email></td>
+                <td><.status></td>
+            </tr>
+            </@>
+        </tbody>
+    </table>
+    <div hx-target="#checked-contacts">
+        <button class="btn" hx-put="/bulk_update/activate">Activate</button>
+        <button class="btn" hx-put="/bulk_update/deactivate">Deactivate</button>
+    </div>
+</form>
