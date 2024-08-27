@@ -9,7 +9,10 @@ sub click_to_load-routes() is export {
         {name=>"Agent Smith", email=>"void{$page*10+$i}@null.org", id=>gen-id}
     }
     
-    sub gen-contacts($page=1) { [.&gen-contact($page) for ^10] }
+    sub gen-contacts($page=1) {
+        sleep(0.4);       #<= delay to make spinner visible
+        [.&gen-contact($page) for ^10]
+    }
 
     route {
         template-location 'templates/click_to_load';
