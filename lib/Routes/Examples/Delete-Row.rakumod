@@ -29,11 +29,9 @@ sub delete_row-routes() is export {
     { .<id> = $++ } for |$data<contacts>;
 
     sub delete-row($id) {
-        for ^$data<contacts> -> \i {
-            if $data<contacts>[i]<id> == $id {
-                $data<contacts> .= splice(i, 1);
-            }
-        }
+        #warn $data.raku; $*ERR.flush;
+
+        $data<contacts> = $data<contacts>.grep(*.<id> != $id).Array;
     }
 
     route {

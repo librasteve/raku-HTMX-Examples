@@ -1,3 +1,11 @@
+<style>
+    /* for the delete_row example */
+    tr.htmx-swapping td {
+        opacity: 0;
+        transition: opacity 1s ease-out;
+    }
+</style>
+
 <form>
     <table class="table delete-row-example">
         <thead>
@@ -15,7 +23,7 @@
                 <td><.email></td>
                 <td><.status></td>
                 <td>
-                    <button class="btn btn-danger" hx-delete="delete_row/contact/<.id>">
+                    <button class="pico-background-pink-600" hx-delete="delete_row/contact/<.id>">
                         Delete
                     </button>
                 </td>

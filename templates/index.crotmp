@@ -8,8 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- pico css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
     <title>Raku Cro HTMX Examples</title>
     <style>
+        /* for nav in left column */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 4fr;
