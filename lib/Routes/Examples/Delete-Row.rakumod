@@ -45,7 +45,7 @@ sub delete_row-routes() is export {
 
         delete -> 'contact', Int $id {
             delete-row($id);
-            template 'index.crotmp', $data;
+            content 'application/json', '';   #200 OK (no content)
         }
     }
 }
