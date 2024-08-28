@@ -30,7 +30,9 @@ sub delete_row-routes() is export {
 
     sub delete-row($id) {
         for ^$data<contacts> -> \i {
-            { $data<contacts> .= splice(i, 1) } if $data<contacts>[i]<id> == $id;
+            if $data<contacts>[i]<id> == $id {
+                $data<contacts> .= splice(i, 1);
+            }
         }
     }
 
@@ -42,9 +44,7 @@ sub delete_row-routes() is export {
         }
 
         delete -> 'contact', Int $id {
-            warn $id.raku;
             delete-row($id);
-
             template 'index.crotmp', $data;
         }
     }
