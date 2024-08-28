@@ -1,0 +1,26 @@
+<form>
+    <table class="table delete-row-example">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML swap:1s">
+            <@contacts>
+            <tr>
+                <td><.name></td>
+                <td><.email></td>
+                <td><.status></td>
+                <td>
+                    <button class="btn btn-danger" hx-delete="delete_row/contact/<.id>">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            </@>
+        </tbody>
+    </table>
+</form>

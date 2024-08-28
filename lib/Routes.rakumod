@@ -22,5 +22,8 @@ sub routes() is export {
         use Routes::Examples::Click-To-Load;
         include click_to_load => click_to_load-routes;
 
+        use Routes::Examples::Delete-Row;
+        include delete_row => delete_row-routes;
+
     }
 }
