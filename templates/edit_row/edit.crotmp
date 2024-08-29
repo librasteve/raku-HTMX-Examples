@@ -1,0 +1,12 @@
+<tr hx-trigger='cancel' class='editing' hx-get="/edit_row/contact/<.id>">
+    <td><input name='name' value='<.name>'></td>
+    <td><input name='email' value='<.email>'></td>
+    <td>
+        <button class="pico-background-pink-600" hx-get="/edit_row/contact/<.id>">
+            Cancel
+        </button>
+        <button class="pico-background-pink-600" hx-put="/edit_row/contact/<.id>" hx-include="closest tr">
+            Save
+        </button>
+    </td>
+</tr>

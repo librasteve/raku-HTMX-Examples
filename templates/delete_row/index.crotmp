@@ -1,10 +1,12 @@
-<style>
-    /* for the delete_row example */
-    tr.htmx-swapping td {
-        opacity: 0;
-        transition: opacity 1s ease-out;
-    }
-</style>
+<head>
+    <style hx-swap-oob="true">
+        /* for the delete_row example */
+        tr.htmx-swapping td {
+            opacity: 0;
+            transition: opacity 2s ease-out;
+        }
+    </style>
+</head>
 
 <form>
     <table class="table delete-row-example">

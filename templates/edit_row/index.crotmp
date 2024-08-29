@@ -1,0 +1,48 @@
+<head>
+    <!-- SweetAlert2 CSS  iamerejh -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" hx-swap-oob="true">
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" hx-swap-oob="true"></script>
+</head>
+
+<body>
+    <!-- hyperscript -->
+    <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
+    <!-- sweet alerts -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+<table class="table edit-row-example">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody hx-target="closest tr" hx-swap="outerHTML">
+        <@contacts>
+        <form>
+            <tr>
+                <td><.name></td>
+                <td><.email></td>
+                <td>
+                    <button class="pico-background-pink-600" hx-get="/edit_row/contact/<.id>/edit" hx-trigger="edit" _="on click
+                         if .editing is not empty
+                           swal({title: 'Already Editing',
+                                 buttons: [true, 'Yep, Edit This Row!'],
+                                 text:'Hey!  You are already editing a row!  Do you want to cancel that edit and continue?'})
+                           if the result is null
+                             halt
+                           end
+                           send cancel to .editing
+                         end
+                         trigger edit">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </form>
+        </@>
+    </tbody>
+</table>

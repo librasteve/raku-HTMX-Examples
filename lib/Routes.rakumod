@@ -25,5 +25,7 @@ sub routes() is export {
         use Routes::Examples::Delete-Row;
         include delete_row => delete_row-routes;
 
+        use Routes::Examples::Edit-Row;
+        include edit_row => edit_row-routes;
     }
 }
