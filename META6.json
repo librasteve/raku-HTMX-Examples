@@ -17,7 +17,9 @@
     "Routes::Examples::Bulk-Update": "lib/Routes/Examples/Bulk-Update.rakumod",
     "Routes::Examples::Click-To-Edit": "lib/Routes/Examples/Click-To-Edit.rakumod",
     "Routes::Examples::Click-To-Load": "lib/Routes/Examples/Click-To-Load.rakumod",
-    "Routes::Examples::Delete-Row": "lib/Routes/Examples/Delete-Row.rakumod"
+    "Routes::Examples::Delete-Row": "lib/Routes/Examples/Delete-Row.rakumod",
+    "Routes::Examples::Edit-Row": "lib/Routes/Examples/Edit-Row.rakumod",
+    "Routes::Examples::Lazy-Loading": "lib/Routes/Examples/Lazy-Loading.rakumod"
   },
   "resources": [
   ],

@@ -27,5 +27,8 @@ sub routes() is export {
 
         use Routes::Examples::Edit-Row;
         include edit_row => edit_row-routes;
+
+        use Routes::Examples::Lazy-Loading;
+        include lazy_loading => lazy_loading-routes;
     }
 }
