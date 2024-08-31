@@ -1,0 +1,12 @@
+        <@contacts : $c>
+        <?$c.last>
+        <tr hx-get="/infinite_scroll/contacts?page=<.next>" hx-trigger="revealed" hx-swap="afterend" hx-target="this">
+        </?>
+        <!>
+        <tr class="">
+        </!>
+            <td><$c.name></td>
+            <td><$c.email></td>
+            <td><$c.id></td>
+        </tr>
+        </@>
