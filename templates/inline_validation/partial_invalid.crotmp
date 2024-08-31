@@ -1,0 +1,6 @@
+<div hx-target="this" hx-swap="outerHTML" class="error">
+    <label>Email Address</label>
+    <input name="email" hx-post="/inline_validation/contact/email" hx-indicator="#ind" value="<.email>">
+    <span><img id="ind" src="/img/bars.svg" class="htmx-indicator" /></span>
+    <span class='pico-color-pink-600'>Please enter a valid email address.</span><br /><br />
+</div>

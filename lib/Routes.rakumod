@@ -30,5 +30,8 @@ sub routes() is export {
 
         use Routes::Examples::Lazy-Loading;
         include lazy_loading => lazy_loading-routes;
+
+        use Routes::Examples::Inline-Validation;
+        include inline_validation => inline_validation-routes;
     }
 }

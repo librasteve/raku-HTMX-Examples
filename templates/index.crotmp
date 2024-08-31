@@ -17,16 +17,6 @@
             grid-template-columns: 1fr 4fr;
         }
     </style>
-    <style>
-        /* for the lazy_loading example */
-        /* FIXME make work as oob - will need a load get dedicated to style */
-        .htmx-settling img {
-            opacity: 0;
-        }
-        img {
-            transition: opacity 1s ease-in;
-        }
-    </style>
 </head>
 
 <body hx-boost="true">

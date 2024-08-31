@@ -1,4 +1,4 @@
-<head>
+<div hx-swap-oob="beforeend:head">
     <style hx-swap-oob="true">
         /* for the delete_row example */
         tr.htmx-swapping td {
@@ -6,7 +6,7 @@
             transition: opacity 2s ease-out;
         }
     </style>
-</head>
+</div>
 
 <form>
     <table class="table delete-row-example">

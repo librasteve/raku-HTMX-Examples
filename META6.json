@@ -19,7 +19,8 @@
     "Routes::Examples::Click-To-Load": "lib/Routes/Examples/Click-To-Load.rakumod",
     "Routes::Examples::Delete-Row": "lib/Routes/Examples/Delete-Row.rakumod",
     "Routes::Examples::Edit-Row": "lib/Routes/Examples/Edit-Row.rakumod",
-    "Routes::Examples::Lazy-Loading": "lib/Routes/Examples/Lazy-Loading.rakumod"
+    "Routes::Examples::Lazy-Loading": "lib/Routes/Examples/Lazy-Loading.rakumod",
+    "Routes::Examples::Inline-Validation": "lib/Routes/Examples/Inline-Validation.rakumod"
   },
   "resources": [
   ],

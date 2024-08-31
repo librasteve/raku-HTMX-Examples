@@ -1,3 +1,15 @@
+<div hx-swap-oob="beforeend:head">
+    <style>
+            /* for the lazy_loading example */
+            .htmx-settling img {
+                opacity: 0;
+            }
+            img {
+                transition: opacity 1s ease-in;
+            }
+    </style>
+</div>
+
 <div hx-get="/lazy_loading/graph" hx-trigger="load">
     <img alt="Result loading..." class="htmx-indicator" width="150" src="/img/bars.svg" />
 </div>
