@@ -10,7 +10,6 @@ sub infinite_scroll-routes() is export {
     }
     
     sub gen-contacts($page=0, $size=20) {
-        sleep(0.4);       #<= delay to make spinner visible
         my @result = [.&gen-contact($page, $size) for ^$size];
         @result[*-1]<last> = True;
         @result;
@@ -20,11 +19,11 @@ sub infinite_scroll-routes() is export {
         template-location 'templates/infinite_scroll';
 
         get -> {
-            template 'index.crotmp', {contacts=>gen-contacts, next=>2};
+            template 'index.crotmp', {contacts=>gen-contacts, next=>1};
         }
 
-        get -> 'contacts', :$page! {
-            sleep 1;
+        get -> 'contacts', Int :$page! {
+            sleep 1;                    #<= delay to make spinner visible
             template 'partial.crotmp', {contacts=>gen-contacts($page), next=>($page+1)};
         }
     }
