@@ -39,5 +39,8 @@ sub routes() is export {
 
         use Routes::Examples::Active-Search;
         include active_search => active_search-routes;
+
+        use Routes::Examples::Progress-Bar;
+        include progress_bar => progress_bar-routes;
     }
 }

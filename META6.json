@@ -24,7 +24,8 @@
     "Routes::Examples::Inline-Validation": "lib/Routes/Examples/Inline-Validation.rakumod",
     "Routes::Examples::Infinite-Scroll": "lib/Routes/Examples/Infinite-Scroll.rakumod",
     "Routes::Examples::Lazy-Loading": "lib/Routes/Examples/Lazy-Loading.rakumod",
-    "Routes::Examples::Active-Search": "lib/Routes/Examples/Active-Search.rakumod"
+    "Routes::Examples::Active-Search": "lib/Routes/Examples/Active-Search.rakumod",
+    "Routes::Examples::Progress-Bar": "lib/Routes/Examples/Progress-Bar.rakumod"
   },
   "resources": [
   ],

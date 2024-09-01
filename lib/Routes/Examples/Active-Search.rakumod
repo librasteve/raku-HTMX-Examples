@@ -110,11 +110,14 @@ my $data =  from-json q:to/END/;
 ;
 
 
-sub search3($needle) {
+sub search($needle) {
+
+    sub check($str) { $str.contains($needle, :i) };
+
     $data.grep: (
-        *.<firstName>.contains( $needle, :i),
-        *.<lastName>.contains( $needle, :i),
-        *.<email>.contains( $needle, :i),
+        *.<firstName>.&check,
+        *.<lastName>.&check,
+        *.<email>.&check,
     ).any;
 }
 
@@ -124,19 +127,17 @@ sub active_search-routes() is export {
         template-location 'templates/active_search';
 
         get -> {
-#            warn $data.raku; $*ERR.flush;
             template 'index.crotmp';
         }
 
         post -> 'search' {
-            my ($needle, $data);
+            my $needle;
 
             request-body -> %fields {
-                $needle = %fields<search>.lc;
+                $needle = %fields<search>;
             }
 
-            $data<results> = search3($needle);
-            template 'results.crotmp', $data;
+            template 'results.crotmp', { results => search($needle) };
         }
     }
 }
