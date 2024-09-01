@@ -1,14 +1,14 @@
-<head>
+<div hx-swap-oob="beforeend:head">
     <!-- SweetAlert2 CSS  iamerejh -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" hx-swap-oob="true">
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" hx-swap-oob="true"></script>
-</head>
+</div>
 
-<body>
+<div hx-swap-oob="beforeend:body">
     <!-- sweet alerts -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-</body>
+</div>
 
 <table class="table edit-row-example">
     <thead>

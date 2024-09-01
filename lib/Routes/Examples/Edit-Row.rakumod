@@ -46,6 +46,7 @@ sub edit_row-routes() is export {
         }
 
         get -> 'contact', Int $id, 'edit'  {
+            warn $data.raku; $*ERR.flush;
             template 'edit.crotmp', $data<contacts>[$id];
         }
     }
