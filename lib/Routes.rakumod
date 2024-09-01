@@ -36,5 +36,8 @@ sub routes() is export {
 
         use Routes::Examples::Infinite-Scroll;
         include infinite_scroll => infinite_scroll-routes;
+
+        use Routes::Examples::Active-Search;
+        include active_search => active_search-routes;
     }
 }
