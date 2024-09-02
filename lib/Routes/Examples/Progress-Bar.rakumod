@@ -28,7 +28,7 @@ sub progress_bar-routes() is export {
         get -> 'job', 'progress' {
             $percentage += floor(33 * rand);
 
-            response.append-header('HX-Trigger', 'done');
+            header 'HX-Trigger', 'done';
             template 'progress_bar.crotmp', { :$percentage };
         }
     }

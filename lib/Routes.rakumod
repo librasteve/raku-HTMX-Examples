@@ -42,5 +42,8 @@ sub routes() is export {
 
         use Routes::Examples::Progress-Bar;
         include progress_bar => progress_bar-routes;
+
+        use Routes::Examples::Value-Select;
+        include value_select => value_select-routes;
     }
 }
