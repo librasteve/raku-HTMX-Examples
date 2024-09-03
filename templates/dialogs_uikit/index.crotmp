@@ -1,0 +1,16 @@
+<div hx-swap-oob="beforeend:head">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.26/dist/css/uikit.min.css" />
+</div>
+
+<div hx-swap-oob="beforeend:body">
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.26/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.26/dist/js/uikit-icons.min.js"></script>
+</div>
+
+<button id="showButton" hx-get="/dialogs_uikit/modal" hx-target="#modals-here" class="uk-button uk-button-primary"
+    _="on htmx:afterOnLoad wait 10ms then add .uk-open to #modal">Open Modal</button>
+
+<div id="modals-here"></div>
+
