@@ -28,7 +28,8 @@
     "Routes::Examples::Progress-Bar": "lib/Routes/Examples/Progress-Bar.rakumod",
     "Routes::Examples::Value-Select": "lib/Routes/Examples/Value-Select.rakumod",
     "Routes::Examples::Animations": "lib/Routes/Examples/Animations.rakumod",
-    "Routes::Examples::File-Upload": "lib/Routes/Examples/File-Upload.rakumod"
+    "Routes::Examples::File-Upload": "lib/Routes/Examples/File-Upload.rakumod",
+    "Routes::Examples::Dialogs-Browser": "lib/Routes/Examples/Dialogs-Browser.rakumod"
   },
   "resources": [
   ],
