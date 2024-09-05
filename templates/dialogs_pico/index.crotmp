@@ -1,14 +1,123 @@
-<button hx-get="/dialogs_pico/modal" hx-target="body" hx-swap="beforeend">Open a Modal</button>
 
-<#><!-- Modal --></#>
-<#>  <section id="modal"></#>
-<#>    <h2>Modal</h2></#>
-<#>    <button class="contrast" data-target="modal-example" onclick="toggleModal(event)"></#>
-<#>      Launch demo modal</#>
-<#>    </button></#>
-<#>  </section></#>
-<#><!-- ./ Modal --></#>
-
-<#>iamerejh</#>
-<#>need proper htmx pico modal integration to avoid vv</#>
 <#>https://codesandbox.io/embed/4mrnhq?view=Editor+%2B+Preview&module=%2Fjs%2Fmodal.js</#>
+
+<div hx-swap-oob="beforeend:head">
+    <script>
+    /*
+     * Modal
+     *
+     * Pico.css - https://picocss.com
+     * Copyright 2019-2024 - Licensed under MIT
+     */
+
+    // Config
+    const isOpenClass = "modal-is-open";
+    const openingClass = "modal-is-opening";
+    const closingClass = "modal-is-closing";
+    const scrollbarWidthCssVar = "--pico-scrollbar-width";
+    const animationDuration = 400; // ms
+    let visibleModal = null;
+
+    // Toggle modal
+    const toggleModal = (event) => {
+      event.preventDefault();
+      const modal = document.getElementById(event.currentTarget.dataset.target);
+      if (!modal) return;
+      modal && (modal.open ? closeModal(modal) : openModal(modal));
+    };
+
+    // Open modal
+    const openModal = (modal) => {
+      const { documentElement: html } = document;
+      const scrollbarWidth = getScrollbarWidth();
+      if (scrollbarWidth) {
+        html.style.setProperty(scrollbarWidthCssVar, `${scrollbarWidth}px`);
+      }
+      html.classList.add(isOpenClass, openingClass);
+      setTimeout(() => {
+        visibleModal = modal;
+        html.classList.remove(openingClass);
+      }, animationDuration);
+      modal.showModal();
+    };
+
+    // Close modal
+    const closeModal = (modal) => {
+      visibleModal = null;
+      const { documentElement: html } = document;
+      html.classList.add(closingClass);
+      setTimeout(() => {
+        html.classList.remove(closingClass, isOpenClass);
+        html.style.removeProperty(scrollbarWidthCssVar);
+        modal.close();
+      }, animationDuration);
+    };
+
+    // Close with a click outside
+    document.addEventListener("click", (event) => {
+      if (visibleModal === null) return;
+      const modalContent = visibleModal.querySelector("article");
+      const isClickInside = modalContent.contains(event.target);
+      !isClickInside && closeModal(visibleModal);
+    });
+
+    // Close with Esc key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && visibleModal) {
+        closeModal(visibleModal);
+      }
+    });
+
+    // Get scrollbar width
+    const getScrollbarWidth = () => {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      return scrollbarWidth;
+    };
+
+    // Is scrollbar visible
+    const isScrollbarVisible = () => {
+      return document.body.scrollHeight > screen.height;
+    };
+    </script>
+</div>
+
+<!-- Modal -->
+<section id="modal">
+<h2>Modal</h2>
+<button class="contrast" data-target="modal-example" onclick="toggleModal(event)">
+  Launch demo modal
+</button>
+</section>
+<!-- ./ Modal -->
+
+<!-- Modal example -->
+<dialog id="modal-example">
+  <article>
+    <header>
+      <button
+        aria-label="Close"
+        rel="prev"
+        data-target="modal-example"
+        onclick="toggleModal(event)"
+      ></button>
+      <h3>Confirm your action!</h3>
+    </header>
+    <p>
+      Cras sit amet maximus risus. Pellentesque sodales odio sit amet augue finibus
+      pellentesque. Nullam finibus risus non semper euismod.
+    </p>
+    <footer>
+      <button
+        role="button"
+        class="secondary"
+        data-target="modal-example"
+        onclick="toggleModal(event)"
+      >
+        Cancel</button
+      ><button autofocus data-target="modal-example" onclick="toggleModal(event)">
+        Confirm
+      </button>
+    </footer>
+  </article>
+</dialog>
+<!-- ./ Modal example -->
