@@ -2,13 +2,7 @@ use Cro::HTTP::Router;
 use Cro::WebApp::Template;
 use Cro::WebApp::Template::Repository;
 
-####################### Some Utility Subroutines ########################
-
-#| send Response from crotmp formatted text supplied as 'immediate' argument
-sub immediate(Str $template-text, $inital-topic ) {
-    content 'text/html', (parse-template($template-text)).render($inital-topic);
-}
-
+##################### Utility Subroutines ####################
 
 #| convert camel case fieldnames like 'firstName' to labels like 'First Name: '
 sub camel2label(Str $camel) {
@@ -27,17 +21,15 @@ my $data = {
 
 my @keys  = <firstName lastName email>;  #in order
 
-############################ View #############################
+############################ View ############################
 
 my @labels = @keys.map: &camel2label;
-my @values = @keys.map: { "<.$_>" };
 my @types  = @keys.map: { $_ ne 'email' ?? 'text' !! $_ };
 
 
-sub sindex($data) {
+sub index($data) {
     use HTML::Functional;
-
-#        warn $data<@names>.raku; $*ERR.flush;
+    #warn $data{@names}.raku; $*ERR.flush;
 
     given $data {
 
@@ -51,7 +43,7 @@ sub sindex($data) {
     }
 }
 
-sub sedit($data) {
+sub edit($data) {
     use HTML::Functional;
 
     given $data {
@@ -77,19 +69,18 @@ sub sedit($data) {
 sub click_to_edit-routes() is export {
     route {
         get -> {
-            content 'text/html', sindex($data);
+            content 'text/html', index($data);
         }
 
         get -> 'contact', Int $id, Str $action='index'  {
 
             given $action {
                 when 'index' {
-                    content 'text/html', sindex($data);
+                    content 'text/html', index($data);
                 }
                 when 'edit' {
-                    content 'text/html', sedit($data);
+                    content 'text/html', edit($data);
                 }
-
             }
 
         }
@@ -100,7 +91,7 @@ sub click_to_edit-routes() is export {
                 $data{$_} = %fields{$_} for $data.keys;
             }
 
-            content 'text/html', sindex($data);
+            content 'text/html', index($data);
         }
     }
 }
