@@ -1,6 +1,6 @@
 **WORK IN PROGRESS**
 
-This branch is for the OO stylee
+This branch is for the OO style
 See /bin/party-spike
 
 HMTL::OO DESIGN
