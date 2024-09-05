@@ -1,5 +1,12 @@
+use Cro::HTTP::Router;
 
 ##################### Utility Subroutines ####################
+
+
+#| hydrate & send Response as function arg
+sub hydrate( &html, $data ) {
+    content 'text/html', &html($data);
+}
 
 #| convert camel case fieldnames like 'firstName' to labels like 'First Name: '
 sub camel2label(Str $camel) {
@@ -24,7 +31,7 @@ my @types  = @keys.map: { $_ ne 'email' ?? 'text' !! $_ };
 
 ############################ View ############################
 
-sub index($data) {
+my &index = -> $data {
     use HTML::Functional;
     #warn $data{@names}.raku; $*ERR.flush;
 
@@ -40,7 +47,7 @@ sub index($data) {
     }
 }
 
-sub edit($data) {
+my &edit = -> $data {
     use HTML::Functional;
 
     given $data {
@@ -64,24 +71,22 @@ sub edit($data) {
 ######################### Controller ##########################
 
 sub click_to_edit-routes() is export {
-    use Cro::HTTP::Router;
 
     route {
         get -> {
-            content 'text/html', index($data);
+            hydrate &index, $data;
         }
 
         get -> 'contact', Int $id, Str $action='index'  {
 
             given $action {
                 when 'index' {
-                    content 'text/html', index($data);
+                    content 'text/html', &index($data);
                 }
                 when 'edit' {
-                    content 'text/html', edit($data);
+                    content 'text/html', &edit($data);
                 }
             }
-
         }
 
         put -> 'contact', Int $id  {
@@ -90,7 +95,7 @@ sub click_to_edit-routes() is export {
                 $data{$_} = %fields{$_} for $data.keys;
             }
 
-            content 'text/html', index($data);
+            content 'text/html', &index($data);
         }
     }
 }
