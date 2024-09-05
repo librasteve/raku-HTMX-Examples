@@ -25,51 +25,73 @@ my $data = {
     email     => "joe@blow.com",
 };
 
-my @names  = <firstName lastName email>;
+my @keys  = <firstName lastName email>;  #in order
 
 ############################ View #############################
 
-my @labels = @names.map: &camel2label;
-my @values = @names.map: { "<.$_>" };
-my @types  = @names.map: { $_ ne 'email' ?? 'text' !! $_ };
+my @labels = @keys.map: &camel2label;
+my @values = @keys.map: { "<.$_>" };
+my @types  = @keys.map: { $_ ne 'email' ?? 'text' !! $_ };
 
-my @all = zip(@labels, @types, @names, @values);
 
-my %crotmp;
-
-{
+sub sindex($data) {
     use HTML::Functional;
 
-    %crotmp<index> :=
-    div( :hx-target<this> :hx-swap<outerHTML>, [
+#        warn $data<@names>.raku; $*ERR.flush;
 
-        zip(@labels, @values).flat.map: { p $^label, $^value }
+    given $data {
 
-        button :hx-get("$base/edit"), 'Click To Edit',
-    ]);
+        div(:hx-target<this> :hx-swap<outerHTML>, [
 
-    %crotmp<edit> :=
-    form( :hx-put("$base"), :hx-target<this> :hx-swap<outerHTML>, [
+            zip(@labels, $_{@keys}).flat.map: { p $^label, $^value }
 
-        @all.map: -> ($label, $type, $name, $value) {
-            div label $label, input :$type, :$name, :$value
-        }
+            button :hx-get("$base/edit"), 'Click To Edit',
+        ]);
 
-        button('Submit'),
-        button(:hx-get("$base"), 'Cancel'),
-    ]);
+    }
 }
+
+sub sedit($data) {
+    use HTML::Functional;
+
+    given $data {
+
+        my @all = zip(@labels, @types, @keys, $_{@keys});
+
+        form( :hx-put("$base"), :hx-target<this> :hx-swap<outerHTML>, [
+
+            @all.map: -> ($label, $type, $name, $value) {
+                div label $label, input :$type, :$name, :$value
+            }
+
+            button('Submit'),
+            button(:hx-get("$base"), 'Cancel'),
+        ]);
+
+    }
+}
+
 
 ######################### Controller ##########################
 
 sub click_to_edit-routes() is export {
     route {
         get -> {
-            immediate %crotmp<index>, $data;
+            content 'text/html', sindex($data);
         }
 
         get -> 'contact', Int $id, Str $action='index'  {
-            immediate %crotmp{$action}, $data;
+
+            given $action {
+                when 'index' {
+                    content 'text/html', sindex($data);
+                }
+                when 'edit' {
+                    content 'text/html', sedit($data);
+                }
+
+            }
+
         }
 
         put -> 'contact', Int $id  {
@@ -78,7 +100,7 @@ sub click_to_edit-routes() is export {
                 $data{$_} = %fields{$_} for $data.keys;
             }
 
-            immediate %crotmp<index>, $data;
+            content 'text/html', sindex($data);
         }
     }
 }
