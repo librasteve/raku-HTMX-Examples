@@ -60,5 +60,11 @@ sub routes() is export {
 
         use Routes::Examples::Dialogs-Bootstrap;
         include dialogs_bootstrap => dialogs_bootstrap-routes;
+
+        use Routes::Examples::Dialogs-Custom;
+        include dialogs_custom => dialogs_custom-routes;
+
+        use Routes::Examples::Dialogs-Pico;
+        include dialogs_pico => dialogs_pico-routes;
     }
 }

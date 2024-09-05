@@ -1,0 +1,3 @@
+<div hx-get="/dialogs_custom/styles" hx-trigger="load"></div>
+
+<button hx-get="/dialogs_custom/modal" hx-target="body" hx-swap="beforeend">Open a Modal</button>

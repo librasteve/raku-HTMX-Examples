@@ -1,0 +1,14 @@
+<button hx-get="/dialogs_pico/modal" hx-target="body" hx-swap="beforeend">Open a Modal</button>
+
+<#><!-- Modal --></#>
+<#>  <section id="modal"></#>
+<#>    <h2>Modal</h2></#>
+<#>    <button class="contrast" data-target="modal-example" onclick="toggleModal(event)"></#>
+<#>      Launch demo modal</#>
+<#>    </button></#>
+<#>  </section></#>
+<#><!-- ./ Modal --></#>
+
+<#>iamerejh</#>
+<#>need proper htmx pico modal integration to avoid vv</#>
+<#>https://codesandbox.io/embed/4mrnhq?view=Editor+%2B+Preview&module=%2Fjs%2Fmodal.js</#>

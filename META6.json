@@ -31,7 +31,9 @@
     "Routes::Examples::File-Upload": "lib/Routes/Examples/File-Upload.rakumod",
     "Routes::Examples::Dialogs-Browser": "lib/Routes/Examples/Dialogs-Browser.rakumod",
     "Routes::Examples::Dialogs-UIKit": "lib/Routes/Examples/Dialogs-UIKit.rakumod",
-    "Routes::Examples::Dialogs-Bootstrap": "lib/Routes/Examples/Dialogs-Bootstrap.rakumod"
+    "Routes::Examples::Dialogs-Bootstrap": "lib/Routes/Examples/Dialogs-Bootstrap.rakumod",
+    "Routes::Examples::Dialogs-Custom": "lib/Routes/Examples/Dialogs-Custom.rakumod",
+    "Routes::Examples::Dialogs-Pico": "lib/Routes/Examples/Dialogs-Pico.rakumod"
   },
   "resources": [
   ],
