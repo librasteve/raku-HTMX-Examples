@@ -1,6 +1,3 @@
-use Cro::HTTP::Router;
-use Cro::WebApp::Template;
-use Cro::WebApp::Template::Repository;
 
 ##################### Utility Subroutines ####################
 
@@ -8,6 +5,7 @@ use Cro::WebApp::Template::Repository;
 sub camel2label(Str $camel) {
     $camel.match(/ (<lower>+) (<upper><lower>+)* /)>>.tc.trim~":";
 }
+
 
 ############################ Model ############################
 
@@ -20,12 +18,11 @@ my $data = {
 };
 
 my @keys  = <firstName lastName email>;  #in order
-
-############################ View ############################
-
 my @labels = @keys.map: &camel2label;
 my @types  = @keys.map: { $_ ne 'email' ?? 'text' !! $_ };
 
+
+############################ View ############################
 
 sub index($data) {
     use HTML::Functional;
@@ -67,6 +64,8 @@ sub edit($data) {
 ######################### Controller ##########################
 
 sub click_to_edit-routes() is export {
+    use Cro::HTTP::Router;
+
     route {
         get -> {
             content 'text/html', index($data);
