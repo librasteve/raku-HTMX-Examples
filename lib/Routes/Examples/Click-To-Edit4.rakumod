@@ -40,27 +40,31 @@ my @labels = @names.map: *.&camel2label;
 my @values = @names.map: *.&crotmpvar;
 my @types  = @names.map: { $_ ne 'email' ?? 'text' !! $_ };
 
+my @all = zip(@labels, @types, @names, @values);
+
 my %tp;
 
 {
     use HTML::Functional;
 
     %tp<default> :=
-    div( :hx-target<this> :hx-swap<outerHTML>, [
-        for ^@names -> \i {
-            p @labels[i], @values[i]
-        }
-        button :hx-get("$base/edit"), 'Click To Edit',
-    ]);
+        div( :hx-target<this> :hx-swap<outerHTML>, [
+
+            zip(@labels, @values).flat.map: {p $^label, $^value}
+
+            button :hx-get("$base/edit"), 'Click To Edit',
+        ]);
 
     %tp<edit> :=
-    form( :hx-put("$base"), :hx-target<this> :hx-swap<outerHTML>, [
-        for ^@names -> \i {
-            div label @labels[i], input :type(@types[i]) :name(@names[i]) :value(@values[i])
-        }
-        button('Submit'),
-        button(:hx-get("$base"), 'Cancel'),
-    ]);
+        form( :hx-put("$base"), :hx-target<this> :hx-swap<outerHTML>, [
+
+            @all.map: -> ($label,  $type,  $name,  $value) {
+                div label $label, input :$type, :$name, :$value
+            }
+
+            button('Submit'),
+            button(:hx-get("$base"), 'Cancel'),
+        ]);
 }
 
 ######################### Controller ##########################
