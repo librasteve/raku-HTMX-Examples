@@ -42,9 +42,11 @@ Install raku - eg. from [rakubrew](https://rakubrew.org), then:
 
 You will note that cro has many other options as documented at [Cro](https://cro.raku.org) if you want to deploy to a production server.
 
-EXTRAS
-======
+TIPS & EXTRAS
+=============
 
+- In development set CRO_DEV=1 in the [environment](https://cro.services/docs/reference/cro-webapp-template#Template_auto-reload)
+- You can use `warn $data.raku; $*ERR.flush;` to say to the cro log window
 - The Preserving File Inputs example is not implemented (also not on htmx.org/examples)
 - The Dialogs - Pico example is new, using JS from the htmx.org [sandbox](https://codesandbox.io/embed/4mrnhq?view=Editor) 
 
