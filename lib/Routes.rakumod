@@ -69,5 +69,8 @@ sub routes() is export {
 
         use Routes::Examples::Tabs-Hateoas;
         include tabs_hateoas => tabs_hateoas-routes;
+
+        use Routes::Examples::Tabs-Hyperscript;
+        include tabs_hyperscript => tabs_hyperscript-routes;
     }
 }
