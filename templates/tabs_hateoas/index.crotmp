@@ -1,5 +1,8 @@
-<div id="tabs" hx-get="/tabs_hateoas/tab1" hx-trigger="load delay:100ms" hx-target="#tabs" hx-swap="innerHTML"></div>
-
-<#>iamerejh</#>
-<#>https://codepen.io/vardumper/pen/VwdJoyE</#>
-<#>https://erikpoehler.com/2022/12/15/picocss-content-tabs/</#>
+<nav>
+  <ul>
+    <li><a href="#" hx-get="/tabs_hateoas/tab1" hx-target="#tab">Tab 1</a></li>
+    <li><a href="#" hx-get="/tabs_hateoas/tab2" hx-target="#tab">Tab 2</a></li>
+    <li><a href="#" hx-get="/tabs_hateoas/tab3" hx-target="#tab">Tab 3</a></li>
+  </ul>
+</nav>
+<div id="tab" hx-get="/tabs_hateoas/tab1" hx-trigger="load"></div>
