@@ -33,7 +33,8 @@
     "Routes::Examples::Dialogs-UIKit": "lib/Routes/Examples/Dialogs-UIKit.rakumod",
     "Routes::Examples::Dialogs-Bootstrap": "lib/Routes/Examples/Dialogs-Bootstrap.rakumod",
     "Routes::Examples::Dialogs-Custom": "lib/Routes/Examples/Dialogs-Custom.rakumod",
-    "Routes::Examples::Dialogs-Pico": "lib/Routes/Examples/Dialogs-Pico.rakumod"
+    "Routes::Examples::Dialogs-Pico": "lib/Routes/Examples/Dialogs-Pico.rakumod",
+    "Routes::Examples::Tabs-Hateoas": "lib/Routes/Examples/Tabs-Hateoas.rakumod"
   },
   "resources": [
   ],

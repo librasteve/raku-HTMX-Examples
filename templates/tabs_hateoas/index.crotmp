@@ -1,0 +1,5 @@
+<div id="tabs" hx-get="/tabs_hateoas/tab1" hx-trigger="load delay:100ms" hx-target="#tabs" hx-swap="innerHTML"></div>
+
+<#>iamerejh</#>
+<#>https://codepen.io/vardumper/pen/VwdJoyE</#>
+<#>https://erikpoehler.com/2022/12/15/picocss-content-tabs/</#>

@@ -66,5 +66,8 @@ sub routes() is export {
 
         use Routes::Examples::Dialogs-Pico;
         include dialogs_pico => dialogs_pico-routes;
+
+        use Routes::Examples::Tabs-Hateoas;
+        include tabs_hateoas => tabs_hateoas-routes;
     }
 }
