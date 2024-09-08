@@ -36,7 +36,7 @@
     "Routes::Examples::Dialogs-Custom": "lib/Routes/Examples/Dialogs-Custom.rakumod",
     "Routes::Examples::Dialogs-Pico": "lib/Routes/Examples/Dialogs-Pico.rakumod",
     "Routes::Examples::Tabs-Hateoas": "lib/Routes/Examples/Tabs-Hateoas.rakumod",
-    "Routes::Examples::Tabs-Hyperscript": "lib/Routes/Examples/Tabs-Hyperscript.rakumod",
+    "Routes::Examples::Tabs-Hyperscript": "lib/Routes/Examples/Tabs-Hyperscript.rakumod"
   },
   "resources": [
   ],
