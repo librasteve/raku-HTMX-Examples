@@ -52,6 +52,9 @@ sub routes() is export {
         use Routes::Examples::File-Upload;
         include file_upload => file_upload-routes;
 
+        use Routes::Examples::Preserving-File-Inputs;
+        include preserving_file_inputs => preserving_file_inputs-routes;
+
         use Routes::Examples::Dialogs-Browser;
         include dialogs_browser => dialogs_browser-routes;
 

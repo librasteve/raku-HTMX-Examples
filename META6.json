@@ -29,14 +29,14 @@
     "Routes::Examples::Value-Select": "lib/Routes/Examples/Value-Select.rakumod",
     "Routes::Examples::Animations": "lib/Routes/Examples/Animations.rakumod",
     "Routes::Examples::File-Upload": "lib/Routes/Examples/File-Upload.rakumod",
+    "Routes::Examples::Preserving-File-Inputs": "lib/Routes/Examples/Preserving-File-Inputs.rakumod",
     "Routes::Examples::Dialogs-Browser": "lib/Routes/Examples/Dialogs-Browser.rakumod",
     "Routes::Examples::Dialogs-UIKit": "lib/Routes/Examples/Dialogs-UIKit.rakumod",
     "Routes::Examples::Dialogs-Bootstrap": "lib/Routes/Examples/Dialogs-Bootstrap.rakumod",
     "Routes::Examples::Dialogs-Custom": "lib/Routes/Examples/Dialogs-Custom.rakumod",
     "Routes::Examples::Dialogs-Pico": "lib/Routes/Examples/Dialogs-Pico.rakumod",
     "Routes::Examples::Tabs-Hateoas": "lib/Routes/Examples/Tabs-Hateoas.rakumod",
-    "Routes::Examples::Tabs-Hyperscript": "lib/Routes/Examples/Tabs-Hyperscript.rakumod"
-
+    "Routes::Examples::Tabs-Hyperscript": "lib/Routes/Examples/Tabs-Hyperscript.rakumod",
   },
   "resources": [
   ],
