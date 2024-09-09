@@ -91,6 +91,5 @@ sub routes() is export {
 
         use Routes::Examples::Confirm;
         include confirm => confirm-routes;
-
     }
 }
