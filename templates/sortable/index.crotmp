@@ -1,0 +1,19 @@
+<div hx-swap-oob="beforeend:body">
+   <!-- Sortable -->
+   <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</div>
+
+<script src="/js/sortable-hx.js"></script>
+
+<form class="sortable" hx-post="/sortable/items" hx-trigger="end">
+    <div class="htmx-indicator">Updating...</div>
+    <div><input type='hidden' name='item' value='1' />Item 1</div>
+    <div><input type='hidden' name='item' value='2' />Item 2</div>
+    <div><input type='hidden' name='item' value='3' />Item 3</div>
+    <div><input type='hidden' name='item' value='4' />Item 4</div>
+    <div><input type='hidden' name='item' value='5' />Item 5</div>
+</form>
+
+
+
+

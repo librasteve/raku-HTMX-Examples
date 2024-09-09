@@ -9,6 +9,10 @@ sub routes() is export {
             template 'index.crotmp';
         }
 
+        get -> 'js', *@path {
+            static 'static/js', @path;
+        }
+
         get -> *@path {
             static 'static', @path;
         }
@@ -75,5 +79,11 @@ sub routes() is export {
 
         use Routes::Examples::Tabs-Hyperscript;
         include tabs_hyperscript => tabs_hyperscript-routes;
+
+        use Routes::Examples::Keyboard-Shortcuts;
+        include keyboard_shortcuts => keyboard_shortcuts-routes;
+
+        use Routes::Examples::Sortable;
+        include sortable => sortable-routes;
     }
 }
