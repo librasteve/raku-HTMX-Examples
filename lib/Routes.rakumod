@@ -85,5 +85,8 @@ sub routes() is export {
 
         use Routes::Examples::Sortable;
         include sortable => sortable-routes;
+
+        use Routes::Examples::Updating-Other-Content;
+        include updating_other_content => updating_other_content-routes;
     }
 }
