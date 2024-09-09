@@ -11,18 +11,10 @@ sub sortable-routes() is export {
         }
 
         post -> 'items'  {
+            request-body -> %fields {
+                warn %fields<item>.raku; $*ERR.flush;
+            }
             # no op == 204
         }
     }
 }
-
-#@bp.route("/")
-#def index():
-#    return render_template("sortable/index.html.j2")
-#
-#
-#@bp.route("/items", methods=("POST",))
-#def items():
-#    # store order of items here
-#    return ("", 204)
-#
