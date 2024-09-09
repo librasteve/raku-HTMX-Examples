@@ -39,7 +39,8 @@
     "Routes::Examples::Tabs-Hyperscript": "lib/Routes/Examples/Tabs-Hyperscript.rakumod",
     "Routes::Examples::Keyboard-Shortcuts": "lib/Routes/Examples/Keyboard-Shortcuts.rakumod",
     "Routes::Examples::Sortable": "lib/Routes/Examples/Sortable.rakumod",
-    "Routes::Examples::Updating-Other-Content": "lib/Routes/Examples/Updating-Other-Content.rakumod"
+    "Routes::Examples::Updating-Other-Content": "lib/Routes/Examples/Updating-Other-Content.rakumod",
+    "Routes::Examples::Confirm": "lib/Routes/Examples/Confirm.rakumod"
   },
   "resources": [
   ],

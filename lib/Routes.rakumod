@@ -88,5 +88,9 @@ sub routes() is export {
 
         use Routes::Examples::Updating-Other-Content;
         include updating_other_content => updating_other_content-routes;
+
+        use Routes::Examples::Confirm;
+        include confirm => confirm-routes;
+
     }
 }
