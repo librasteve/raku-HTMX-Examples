@@ -10,16 +10,8 @@ sub tabs_hateoas-routes() is export {
             template 'index.crotmp';
         }
 
-        get -> 'tab1' {
-            template 'tab1.crotmp';
-        }
-
-        get -> 'tab2' {
-            template 'tab2.crotmp';
-        }
-
-        get -> 'tab3' {
-            template 'tab3.crotmp';
+        get -> $target where /^ tab\d $/ {
+            template "$target.crotmp";
         }
     }
 }
