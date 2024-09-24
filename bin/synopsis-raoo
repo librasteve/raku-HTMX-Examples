@@ -15,6 +15,7 @@ $p.body: '<p>Hello World!</p>';
 say $p.render;
 #]
 
+#`[
 ### the synopsis page
 my $p = Page.new;
 
@@ -50,4 +51,57 @@ $p.body: [
 ];
 
 say $p.render;
+#]
+
+#[
+### the synopsis page via MyRoles
+
+#| write your own role to setup default values and custom attributes
+role MyPage does Page {
+    has $.description;
+    has $.title;
+
+    method TWEAK {
+        self.meta: {:charset<utf-8>};
+        self.meta: {:name<viewport>, :content<width=device-width, initial-scale=1>};
+        self.meta: {:name<description>, :content($!description)};
+
+        self.link: {:rel<stylesheet>, :href<https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css> };
+
+        self.Page::title: $!title;   #ie call title method on parent role
+
+        self.script: :src<https://unpkg.com/htmx.org@1.7.0>;
+
+        self.style: q:to/END/;
+            .jumbotron {
+              background-color: #e6ffe6;
+              text-align: center;
+            }
+            END
+    }
+}
+
+#| then each Page instance is already provided
+my $p = MyPage.new:
+    description => 'raku does htmx',
+    title       => 'Raku HTMX',
+;
+
+$p.body: [
+    div( :class<jumbotron>, [
+        h1("Welcome to Dunder Mifflin!"),                          #use parens to stop <h1> slurping <p>
+        p  "Dunder Mifflin Inc. (stock symbol {strong 'DMI'}) " ~
+            q:to/END/;
+            is a micro-cap regional paper and office
+            supply distributor with an emphasis on servicing
+            small-business clients.
+            END
+    ]),
+
+    p :hx-get<https://v2.jokeapi.dev/joke/Any?format=txt&safe-mode>,
+        "Click Me",
+];
+
+say $p.render;
+#]
 

@@ -45,7 +45,7 @@ a site is built as a single page application with frameworks such as react that 
 
 the elements are hooked into event driven framework which propagates events and updates up and down
 
-the downside is that this react construction, while localizing mvc concerns, emphasizes dynamimism over content
+the downside is that this react construction, while localizing mvc concerns, emphasizes event based dynamism over static content
 
 and, alternatively:
 
@@ -57,8 +57,16 @@ TODOS
 =====
 
 #### fn then oo
- - [ ] revert to for loop
+ - [x] bring in latest steve-02-fn (as Click-To-Edit5.rakumod)
+ - [x] revert to for loop (c2e5)
+ - [x] oo class to role
+ - [ ] mixin to myroles
+ - [ ] picocss root
+ - [ ] raku.org
  - [ ] rm steve-03-php
+ - [ ] crud site
+ - [ ] picocss local
+
 
 #### Minimum Lovable Product (`MLP`)
 
@@ -66,12 +74,12 @@ TODOS
 - [x] Export them so that `h1("text")` makes `<h1>text</h1>` and so on
 - [x] Pass and format the HTMX attributes
 - [x] Bring in synopsis from design
-- [ ] Make a parse script to get routes (likely will want a grammar)??
-  - ```<p hx-get="https://v2.jokeapi.dev/joke/Any?format=txt&safe-mode">Click Me</p>```
-- [x] Write some tests
-- [ ] Write some docs
 - [x] Release with App::Mi6
+- [x] Write some tests
 - [x] Publish as raku-htmx on the htmx Discord
+- [ ] Make a parse script to get routes (likely will want a grammar)??
+- ```<p hx-get="https://v2.jokeapi.dev/joke/Any?format=txt&safe-mode">Click Me</p>```
+- [ ] Write some docs
 
 Typical deployment dir structure:
 ~/foo > tree

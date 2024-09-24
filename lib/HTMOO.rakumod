@@ -10,7 +10,7 @@ use HTML::Functional;
 subset Tag  of Str;
 subset Attr of Str;
 
-class Meta {
+role Meta {
     has Tag  $.tag = 'meta';
     has Attr() %.attrs;   #coercion is friendly to attr values with spaces
 
@@ -19,7 +19,7 @@ class Meta {
     }
 }
 
-class Title {
+role Title {
     has Tag  $.tag = 'title';
     has Str  $.inner;
 
@@ -28,7 +28,7 @@ class Title {
     }
 }
 
-class Script {
+role Script {
     has Tag  $.tag = 'script';
     has Str  $.src;
 
@@ -41,7 +41,7 @@ class Script {
     }
 }
 
-class Link {
+role Link {
     has Tag  $.tag  = 'link';
     has Attr %.attrs;
 
@@ -50,7 +50,7 @@ class Link {
     }
 }
 
-class Style {
+role Style {
     has Tag  $.tag  = 'style';
     has Str  $.css;
 
@@ -59,7 +59,7 @@ class Style {
     }
 }
 
-class Head {
+role Head {
     has Tag    $.tag = 'head';
     has Meta   @.metas;
     has Title  $.title is rw;
@@ -75,11 +75,10 @@ class Head {
         "{ (.render for  @!links   ).join }" ~
         "{ (.render with $!style   )}"       ~
         closer($!tag)
-
     }
 }
 
-class Body {
+role Body {
     has Tag   $.tag = 'body';
     has Str() $.inner;
 
@@ -90,7 +89,7 @@ class Body {
     }
 }
 
-class Html {
+role Html {
     has Tag  $.tag   = 'html';
     has Attr() %.attrs = {:lang<en>};
     has Head $.head .= new;
@@ -104,7 +103,7 @@ class Html {
     }
 }
 
-class Page {
+role Page {
     has $.doctype = 'html';
     has Html $.html .= new;
 
