@@ -56,18 +56,22 @@ a site is built in a functional way with elm
 TODOS
 =====
 
+#### fn then oo
+ - [ ] revert to for loop
+ - [ ] rm steve-03-php
+
 #### Minimum Lovable Product (`MLP`)
 
 - [x] Get a definitive list of HTML tags
 - [x] Export them so that `h1("text")` makes `<h1>text</h1>` and so on
 - [x] Pass and format the HTMX attributes
 - [x] Bring in synopsis from design
-- [ ] Make a parse script to get routes (likely will want a grammar)
+- [ ] Make a parse script to get routes (likely will want a grammar)??
   - ```<p hx-get="https://v2.jokeapi.dev/joke/Any?format=txt&safe-mode">Click Me</p>```
 - [x] Write some tests
-- [ ] Write some docs in POD6
-- [ ] Release with App::Mi6
-- [ ] Publish as raku-htmx on the htmx Discord
+- [ ] Write some docs
+- [x] Release with App::Mi6
+- [x] Publish as raku-htmx on the htmx Discord
 
 Typical deployment dir structure:
 ~/foo > tree

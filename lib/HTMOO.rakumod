@@ -5,38 +5,7 @@ This has the superpowers of defaults and overrrides
 Newline is inner to outer
 #]
 
-## FIXME these sub are [improved] dupes of HTMX.rakumod
-## FIXME but had to drop the newlines to avoid spaces
-
-sub attrs(%h) {
-    +%h ?? (' ' ~ %h.map({.key ~ '="' ~ .value ~ '"'}).join(' ') ) !! ''
-}
-
-sub opener($tag, *%h) {
-    '<' ~ $tag ~ attrs(%h) ~ '>'
-}
-
-sub closer($tag) {
-    '</' ~ $tag ~ '>'
-}
-
-sub do-regular-tag( $tag, *@inners, *%h ) {
-    given @inners {
-        when * == 0 {
-            opener($tag, |%h) ~ closer($tag)
-        }
-        when * == 1 {
-            opener($tag, |%h) ~ @inners.first ~ closer($tag)
-        }
-        when * >= 2 {
-            opener($tag, |%h) ~ @inners.join ~ closer($tag)
-        }
-    }
-}
-
-sub do-singular-tag( $tag, *%h ) {
-    '<' ~ $tag ~ attrs(%h) ~ ' />'
-}
+use HTML::Functional;
 
 subset Tag  of Str;
 subset Attr of Str;
