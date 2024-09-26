@@ -81,7 +81,7 @@ role MyPage does Page {
     }
 }
 
-#| then each Page instance is already provided
+#| then each Page instance can reuse the defaults
 my $p = MyPage.new:
     description => 'raku does htmx',
     title       => 'Raku HTMX',
