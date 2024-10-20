@@ -1,53 +1,46 @@
 {
-  "auth": "zef:librasteve",
-  "authors": [
-    "librasteve"
-  ],
-  "build-depends": [
-  ],
-  "depends": [
-    "cro",
-    "Cro::WebApp",
-    "JSON::Fast"
-  ],
-  "description": "blah blah blah",
-  "license": "Artistic-2.0",
-  "name": "Routes",
-  "perl": "6.d",
-  "provides": {
-    "Routes": "lib/Routes.rakumod",
-    "Routes::Examples::Bulk-Update": "lib/Routes/Examples/Bulk-Update.rakumod",
-    "Routes::Examples::Click-To-Edit": "lib/Routes/Examples/Click-To-Edit.rakumod",
-    "Routes::Examples::Click-To-Load": "lib/Routes/Examples/Click-To-Load.rakumod",
-    "Routes::Examples::Delete-Row": "lib/Routes/Examples/Delete-Row.rakumod",
-    "Routes::Examples::Edit-Row": "lib/Routes/Examples/Edit-Row.rakumod",
-    "Routes::Examples::Inline-Validation": "lib/Routes/Examples/Inline-Validation.rakumod",
-    "Routes::Examples::Infinite-Scroll": "lib/Routes/Examples/Infinite-Scroll.rakumod",
-    "Routes::Examples::Lazy-Loading": "lib/Routes/Examples/Lazy-Loading.rakumod",
-    "Routes::Examples::Active-Search": "lib/Routes/Examples/Active-Search.rakumod",
-    "Routes::Examples::Progress-Bar": "lib/Routes/Examples/Progress-Bar.rakumod",
-    "Routes::Examples::Value-Select": "lib/Routes/Examples/Value-Select.rakumod",
-    "Routes::Examples::Animations": "lib/Routes/Examples/Animations.rakumod",
-    "Routes::Examples::File-Upload": "lib/Routes/Examples/File-Upload.rakumod",
-    "Routes::Examples::Preserving-File-Inputs": "lib/Routes/Examples/Preserving-File-Inputs.rakumod",
-    "Routes::Examples::Dialogs-Browser": "lib/Routes/Examples/Dialogs-Browser.rakumod",
-    "Routes::Examples::Dialogs-UIKit": "lib/Routes/Examples/Dialogs-UIKit.rakumod",
-    "Routes::Examples::Dialogs-Bootstrap": "lib/Routes/Examples/Dialogs-Bootstrap.rakumod",
-    "Routes::Examples::Dialogs-Custom": "lib/Routes/Examples/Dialogs-Custom.rakumod",
-    "Routes::Examples::Dialogs-Pico": "lib/Routes/Examples/Dialogs-Pico.rakumod",
-    "Routes::Examples::Tabs-Hateoas": "lib/Routes/Examples/Tabs-Hateoas.rakumod",
-    "Routes::Examples::Tabs-Hyperscript": "lib/Routes/Examples/Tabs-Hyperscript.rakumod",
-    "Routes::Examples::Keyboard-Shortcuts": "lib/Routes/Examples/Keyboard-Shortcuts.rakumod",
-    "Routes::Examples::Sortable": "lib/Routes/Examples/Sortable.rakumod",
-    "Routes::Examples::Updating-Other-Content": "lib/Routes/Examples/Updating-Other-Content.rakumod",
-    "Routes::Examples::Confirm": "lib/Routes/Examples/Confirm.rakumod"
-  },
-  "resources": [
-  ],
-  "source-url": "https://github.com/librasteve/raku-HTMX-Examples.git",
-  "tags": [
-  ],
-  "test-depends": [
-  ],
-  "version": "0.0.1"
+    "name": "Routes",
+    "description": "blah blah blah",
+    "version": "0.0.1",
+    "authors": [
+        "librasteve"
+    ],
+    "auth": "zef:librasteve",
+    "depends": [
+        "cro",
+        "Cro::WebApp",
+        "JSON::Fast",
+        "Cro::HTTP::Router"
+    ],
+    "build-depends": [],
+    "provides": {
+        "Routes": "lib/Routes.rakumod",
+        "Routes::Examples::Bulk-Update": "lib/Routes/Examples/Bulk-Update.rakumod",
+        "Routes::Examples::Click-To-Edit": "lib/Routes/Examples/Click-To-Edit.rakumod",
+        "Routes::Examples::Click-To-Load": "lib/Routes/Examples/Click-To-Load.rakumod",
+        "Routes::Examples::Delete-Row": "lib/Routes/Examples/Delete-Row.rakumod",
+        "Routes::Examples::Edit-Row": "lib/Routes/Examples/Edit-Row.rakumod",
+        "Routes::Examples::Inline-Validation": "lib/Routes/Examples/Inline-Validation.rakumod",
+        "Routes::Examples::Infinite-Scroll": "lib/Routes/Examples/Infinite-Scroll.rakumod",
+        "Routes::Examples::Lazy-Loading": "lib/Routes/Examples/Lazy-Loading.rakumod",
+        "Routes::Examples::Active-Search": "lib/Routes/Examples/Active-Search.rakumod",
+        "Routes::Examples::Progress-Bar": "lib/Routes/Examples/Progress-Bar.rakumod",
+        "Routes::Examples::Value-Select": "lib/Routes/Examples/Value-Select.rakumod",
+        "Routes::Examples::Animations": "lib/Routes/Examples/Animations.rakumod",
+        "Routes::Examples::File-Upload": "lib/Routes/Examples/File-Upload.rakumod",
+        "Routes::Examples::Preserving-File-Inputs": "lib/Routes/Examples/Preserving-File-Inputs.rakumod",
+        "Routes::Examples::Dialogs-Browser": "lib/Routes/Examples/Dialogs-Browser.rakumod",
+        "Routes::Examples::Dialogs-UIKit": "lib/Routes/Examples/Dialogs-UIKit.rakumod",
+        "Routes::Examples::Dialogs-Bootstrap": "lib/Routes/Examples/Dialogs-Bootstrap.rakumod",
+        "Routes::Examples::Dialogs-Custom": "lib/Routes/Examples/Dialogs-Custom.rakumod",
+        "Routes::Examples::Dialogs-Pico": "lib/Routes/Examples/Dialogs-Pico.rakumod",
+        "Routes::Examples::Tabs-Hateoas": "lib/Routes/Examples/Tabs-Hateoas.rakumod",
+        "Routes::Examples::Tabs-Hyperscript": "lib/Routes/Examples/Tabs-Hyperscript.rakumod",
+        "Routes::Examples::Keyboard-Shortcuts": "lib/Routes/Examples/Keyboard-Shortcuts.rakumod",
+        "Routes::Examples::Sortable": "lib/Routes/Examples/Sortable.rakumod",
+        "Routes::Examples::Updating-Other-Content": "lib/Routes/Examples/Updating-Other-Content.rakumod",
+        "Routes::Examples::Confirm": "lib/Routes/Examples/Confirm.rakumod"
+    },
+    "license": "Artistic-2.0",
+    "source-url": "https://github.com/librasteve/raku-HTMX-Examples.git"
 }
