@@ -7,60 +7,42 @@ Newline is inner to outer
 
 use HTML::Functional;
 
-subset Tag  of Str;
+enum TagType <Singular Regular>;
 subset Attr of Str;
 
-role Meta {
-    has Tag  $.tag = 'meta';
+role Tag[Str $name, TagType $tag-type] {
+    has Str    $.name = $name;
     has Attr() %.attrs;   #coercion is friendly to attr values with spaces
+    has        $.inner;
 
-    method render {
-        do-singular-tag( $!tag, |%!attrs )
+    multi method render {
+        samewith $tag-type
+    }
+    multi method render(Singular) {
+        do-singular-tag( $!name, |%!attrs )
+    }
+    multi method render(Regular) {
+        do-regular-tag( $!name, [$!inner // ''], |%!attrs )
     }
 }
 
-role Title {
-    has Tag  $.tag = 'title';
-    has Str  $.inner;
+role Meta does Tag['meta', Singular] { }
 
-    method render {
-        do-regular-tag($!tag, [$!inner])
-    }
-}
+role Title does Tag['title', Regular] { }
 
-role Script {
-    has Tag  $.tag = 'script';
-    has Str  $.src;
+role Script does Tag['script', Regular] {
+    has Str $.src;
 
     method attrs {
         {src => $!src}
     }
-
-    method render {
-        do-regular-tag( $!tag, |$.attrs )
-    }
 }
 
-role Link {
-    has Tag  $.tag  = 'link';
-    has Attr %.attrs;
+role Link does Tag['link', Singular] { }
 
-    method render {
-        do-singular-tag( $!tag, |%!attrs )
-    }
-}
+role Style does Tag['style', Regular] { }
 
-role Style {
-    has Tag  $.tag  = 'style';
-    has Str  $.css;
-
-    method render {
-        do-regular-tag( $!tag, [$!css] )
-    }
-}
-
-role Head {
-    has Tag    $.tag = 'head';
+role Head does Tag['head', Regular] {
     has Meta   @.metas;
     has Title  $.title is rw;
     has Script @.scripts;
@@ -68,44 +50,38 @@ role Head {
     has Style  $.style is rw;
 
     #some basic defaults
-    submethod TWEAK {
+    method defaults {
         self.metas.append: Meta.new: attrs => {:charset<utf-8>};
         self.metas.append: Meta.new: attrs => {:name<viewport>, :content<width=device-width, initial-scale=1>};
     }
 
-    method render {
-        opener($!tag)                 ~ "\n" ~
+    multi method render {
+        opener($.name)                 ~ "\n" ~
         "{ (.render for  @!metas   ).join }" ~
         "{ (.render with $!title   )}"       ~
         "{ (.render for  @!scripts ).join }" ~
         "{ (.render for  @!links   ).join }" ~
         "{ (.render with $!style   )}"       ~
-        closer($!tag)
+        closer($.name)
     }
 }
 
-role Body {
-    has Tag   $.tag = 'body';
-    has Str() $.inner;
+role Body does Tag['body', Regular] { }
 
-    method render {
-        opener($!tag)   ~ "\n" ~
-        $!inner         ~ "\n" ~
-        closer($!tag)
-    }
-}
-
-role Html {
-    has Tag  $.tag   = 'html';
-    has Attr() %.attrs = {:lang<en>};
+role Html does Tag['html', Regular] {
     has Head $.head .= new;
     has Body $.body is rw;
 
-    method render {
-        opener($!tag, |%!attrs) ~ "\n" ~
+    method defaults {
+        self.head.defaults;
+        %.attrs.push: :lang<en>;
+    }
+
+    multi method render {
+        opener($.name, |%.attrs) ~ "\n" ~
         $!head.render           ~
         $!body.render           ~
-        closer($!tag)
+        closer($.name)
     }
 }
 
@@ -113,15 +89,16 @@ role Page {
     has $.doctype = 'html';
     has Html $.html .= new;
 
-    has $.description;
     has $.title;
+    has $.description;
 
     method defaults {
+        self.html.defaults;
+        self.html.head.title = Title.new(inner => $!title);
         self.meta: {:name<description>, :content($!description)};
-        self.Page::title: $!title;   #ie call title method on parent role
     }
 
-    method render {
+    multi method render {
         "<!doctype $!doctype>\n" ~
         $!html.render
     }
@@ -132,7 +109,7 @@ role Page {
     }
 
     method title($inner) {
-        self.html.head.title = Title.new(:$inner)
+        self.html.head.title = Title.new(inner => $!title)
     }
 
     method script(:$src) {
@@ -143,8 +120,8 @@ role Page {
         self.html.head.links.append: Link.new(:%attrs)
     }
 
-    method style($css) {
-        self.html.head.style = Style.new(:$css)
+    method style($inner) {
+        self.html.head.style = Style.new(:$inner)
     }
 
     method body($inner) {
@@ -152,6 +129,29 @@ role Page {
     }
 }
 
+role Container {
+
+}
+
+role Layout {
+
+}
+
+role Template {
+
+}
+
+role Component {
+
+}
+
+role Site {
+
+}
+
+role Nav {
+
+}
 
 #`[
 my $static = './static/index.html';

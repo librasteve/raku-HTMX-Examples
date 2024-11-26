@@ -62,7 +62,10 @@ TODOS
  - [x] bring in latest steve-02-fn (as Click-To-Edit5.rakumod)
  - [x] revert to for loop (c2e5)
  - [x] oo class to role
- - [ ] mixin to myroles
+ - [ ] synopsis-c2e to live
+   - [ ] render HTML::Functional
+   - [ ] render CroTmp
+   - [ ] routes
  - [ ] picocss root
  - [ ] raku.org
  - [ ] rm steve-03-php
