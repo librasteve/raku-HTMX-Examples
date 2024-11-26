@@ -67,6 +67,12 @@ role Head {
     has Link   @.links;
     has Style  $.style is rw;
 
+    #some basic defaults
+    submethod TWEAK {
+        self.metas.append: Meta.new: attrs => {:charset<utf-8>};
+        self.metas.append: Meta.new: attrs => {:name<viewport>, :content<width=device-width, initial-scale=1>};
+    }
+
     method render {
         opener($!tag)                 ~ "\n" ~
         "{ (.render for  @!metas   ).join }" ~
@@ -136,7 +142,6 @@ role Page {
     method body($inner) {
         self.html.body = Body.new(:$inner)
     }
-
 }
 
 

@@ -61,9 +61,7 @@ role MyPage does Page {
     has $.description;
     has $.title;
 
-    method TWEAK {
-        self.meta: {:charset<utf-8>};
-        self.meta: {:name<viewport>, :content<width=device-width, initial-scale=1>};
+    submethod TWEAK {
         self.meta: {:name<description>, :content($!description)};
 
         self.link: {:rel<stylesheet>, :href<https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css> };
