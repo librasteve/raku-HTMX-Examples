@@ -62,6 +62,7 @@ TODOS
  - [x] bring in latest steve-02-fn (as Click-To-Edit5.rakumod)
  - [x] revert to for loop (c2e5)
  - [x] oo class to role
+ - [ ] TWEAK back into roles (see Vadim [post](https://blogs.perl.org/users/vadim_belman/2019/12/post.html))
  - [ ] synopsis-c2e to live
    - [ ] render HTML::Functional
    - [ ] render CroTmp
