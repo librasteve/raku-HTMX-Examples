@@ -113,6 +113,14 @@ role Page {
     has $.doctype = 'html';
     has Html $.html .= new;
 
+    has $.description;
+    has $.title;
+
+    method defaults {
+        self.meta: {:name<description>, :content($!description)};
+        self.Page::title: $!title;   #ie call title method on parent role
+    }
+
     method render {
         "<!doctype $!doctype>\n" ~
         $!html.render

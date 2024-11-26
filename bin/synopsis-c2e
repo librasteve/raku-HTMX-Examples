@@ -4,22 +4,12 @@ use v6.d;
 use HTML::Functional;
 use HTMOO;
 
-#`[
-### the minimal page
-my $p = Page.new;
-
-$p.title: "Raku HTMX";
-$p.style: 'p {color: blue;}';
-$p.body: '<p>Hello World!</p>';
-
-say $p.render;
-#]
-
 #[
-### htmx page with HTMOO
+### c2e page with HTMOO
 
 #| write your own role to setup default values and custom attributes
 class MyPage does Page {
+
     submethod TWEAK {
         self.defaults;
         self.link: {:rel<stylesheet>, :href<https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css> };
@@ -32,6 +22,7 @@ class MyPage does Page {
             }
             END
     }
+
 }
 
 #| then each Page instance can reuse the defaults
