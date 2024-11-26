@@ -6,6 +6,7 @@ See /bin/party-spike
 HMTL::OO DESIGN
 ===============
 
+```
 site
     page[home]
         header
@@ -28,6 +29,7 @@ source
     md
     htmx::function
     htmoo::parts
+ ```
 
 building a website...
 
