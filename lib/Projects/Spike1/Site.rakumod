@@ -93,13 +93,50 @@ class Routes {
     }
 }
 
-class Island does Render {
+role Island[$view-name] does Render {
     has Style   $.style;
     has Layout  $.layout;
     has Content $.content;
     has Model   $.model;
     has Routes  $.routes;
+    has Views   @.views;   ??
 }
+
+
+subset Html of Str;
+subset Css of Str;
+subset Js of Str;
+
+class Content {
+    has Html $.html is required;
+    has Css  $.css;
+    has Js   $.js;
+}
+
+subset BodyCall of Callable;     #<== returns Content object (not sure how to specify that)
+
+role HTML::Component::API {
+
+    #| render should return a Content object which must have some HTML and may also
+    #| add custom CSS and JS if needed which render will "append" to the final
+    #| web page content that is emitted
+    #|
+    #| chains of render methods are permitted to eg permeate down a tree to child
+    #| roles and classes and then to be aggregated back up
+    #|
+    #| optionally a body may be provided by the caller, typically (in the same way
+    #| as a Cro Template "macro"), this allows for render to top and tail some content
+    #| in a pattern that echoes the final HTML tree structure
+    #|
+    multi method render(-> Content) { ... }
+multi method render(Content % -> Content) { ... }
+multi method render(BodyCall & -> Content) { ... }
+}
+
+class HTML::Component does HTML::Component::API {
+    ...    #your simple code example would go here
+}
+
 
 ---
 
