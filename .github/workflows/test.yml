@@ -6,6 +6,9 @@ on:
       - '*'
     tags-ignore:
       - '*'
+  schedule:
+    # This runs at 12:00 UTC every day
+    - cron: '0 12 * * *'
   pull_request:
 
 jobs:
