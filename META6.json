@@ -1,24 +1,20 @@
 {
-  "name": "HTMX::Examples",
-  "description": "blah blah blah",
-  "version": "0.0.1",
-  "perl": "6.d",
-  "authors": [
-    "librasteve"
-  ],
-  "auth": "zef:librasteve",
-  "depends": [
-    "cro",
-    "Cro::WebApp",
-    "HTML::Functional"
-  ],
-  "build-depends": [],
-  "test-depends": [],
-  "provides": {
-    "HTMOO": "lib/HTMOO.rakumod"
-  },
-  "resources": [],
-  "license": "Artistic-2.0",
-  "tags": [],
-  "source-url": ""
+    "name": "HTMX::Examples",
+    "description": "blah blah blah",
+    "version": "0.0.1",
+    "authors": [
+        "librasteve"
+    ],
+    "auth": "zef:librasteve",
+    "depends": [
+        "cro",
+        "Cro::WebApp",
+        "HTML::Functional"
+    ],
+    "build-depends": [],
+    "provides": {
+        "HTMOO2": "lib/HTMOO2.rakumod"
+    },
+    "license": "Artistic-2.0",
+    "source-url": ""
 }

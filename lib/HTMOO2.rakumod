@@ -7,24 +7,24 @@ Newline is inner to outer
 
 use HTML::Functional;
 
-enum TagType <Singular Regular>;
-subset Attr of Str;
-
-role Tag[Str $name, TagType $tag-type] {
-    has Str    $.name = $name;
-    has Attr() %.attrs;   #coercion is friendly to attr values with spaces
-    has        $.inner;
-
-    multi method render {
-        samewith $tag-type
-    }
-    multi method render(Singular) {
-        do-singular-tag( $!name, |%!attrs )
-    }
-    multi method render(Regular) {
-        do-regular-tag( $!name, [$!inner // ''], |%!attrs )
-    }
-}
+#enum TagType is export <Singular Regular>;
+#subset Attr of Str;
+#
+#role Tag[Str $name, TagType $tag-type] {
+#    has Str    $.name = $name;
+#    has Attr() %.attrs;   #coercion is friendly to attr values with spaces
+#    has        $.inner;
+#
+#    multi method HTML {
+#        samewith $tag-type
+#    }
+#    multi method HTML(Singular) {
+#        do-singular-tag( $!name, |%!attrs )
+#    }
+#    multi method HTML(Regular) {
+#        do-regular-tag( $!name, [$!inner // ''], |%!attrs )
+#    }
+#}
 
 role Meta does Tag['meta', Singular] { }
 
@@ -55,13 +55,13 @@ role Head does Tag['head', Regular] {
         self.metas.append: Meta.new: attrs => {:name<viewport>, :content<width=device-width, initial-scale=1>};
     }
 
-    multi method render {
+    multi method HTML {
         opener($.name)                 ~ "\n" ~
-        "{ (.render for  @!metas   ).join }" ~
-        "{ (.render with $!title   )}"       ~
-        "{ (.render for  @!scripts ).join }" ~
-        "{ (.render for  @!links   ).join }" ~
-        "{ (.render with $!style   )}"       ~
+        "{ (.HTML for  @!metas   ).join }" ~
+        "{ (.HTML with $!title   )}"       ~
+        "{ (.HTML for  @!scripts ).join }" ~
+        "{ (.HTML for  @!links   ).join }" ~
+        "{ (.HTML with $!style   )}"       ~
         closer($.name)
     }
 }
@@ -77,10 +77,10 @@ role Html does Tag['html', Regular] {
         %.attrs.push: :lang<en>;
     }
 
-    multi method render {
+    multi method HTML {
         opener($.name, |%.attrs) ~ "\n" ~
-        $!head.render           ~
-        $!body.render           ~
+        $!head.HTML           ~
+        $!body.HTML           ~
         closer($.name)
     }
 }
@@ -98,9 +98,9 @@ role Page {
         self.meta: {:name<description>, :content($!description)};
     }
 
-    multi method render {
+    method HTML {
         "<!doctype $!doctype>\n" ~
-        $!html.render
+        $!html.HTML
     }
 
     #some setter methods
@@ -158,9 +158,9 @@ my $static = './static/index.html';
 my %assets = ( js => './static/js', css => './static/js', images => './static/images' );
 my $routes = './lib/Routes.rakumod';
 
-spurt $page.render-static $static;
-spurt $page.render-assets %assets;
-spurt $page.render-routes $routes;
+spurt $page.HTML-static $static;
+spurt $page.HTML-assets %assets;
+spurt $page.HTML-routes $routes;
 #]
 
 

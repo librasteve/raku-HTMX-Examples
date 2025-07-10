@@ -2,7 +2,7 @@
 use v6.d;
 
 use HTML::Functional;
-use HTMOO;
+use HTMOO2;
 
 #`[
 ### the minimal page
@@ -55,7 +55,7 @@ $p.body: [
         "Click Me",
 ];
 
-say $p.render;
+say $p.HTML;
 #]
 
 #

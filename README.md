@@ -118,7 +118,7 @@ HTML
 
 
 How to launch cro + HTMX:
-- Install modules `zef install --/test cro HTMX`
+- Install modules `zef install --/test cro HTML::Functional`
 - Use cro to make a stub service `cro stub http foo foo`
 - `cd foo`
 - Use HTMX / HTMOO to make your website and place it in `./static`
